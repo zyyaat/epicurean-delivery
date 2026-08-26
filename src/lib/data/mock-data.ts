@@ -2,12 +2,12 @@ import { Restaurant } from '@/components/home/RestaurantCard';
 import { Category } from '@/components/home/CategoryChips';
 
 export const categories: Category[] = [
-  { id: 'burgers', name: 'Burgers', icon: 'lunch_dining' },
-  { id: 'pizza', name: 'Pizza', icon: 'local_pizza' },
-  { id: 'sushi', name: 'Sushi', icon: 'set_meal' },
-  { id: 'dessert', name: 'Dessert', icon: 'cake' },
-  { id: 'asian', name: 'Asian', icon: 'ramen_dining' },
-  { id: 'cafe', name: 'Cafe', icon: 'local_cafe' },
+  { id: 'burgers', name: 'Burgers', image: '/categories/burgers.jpg', color: '#ff6b35' },
+  { id: 'pizza', name: 'Pizza', image: '/categories/pizza.jpg', color: '#d41b3c' },
+  { id: 'sushi', name: 'Sushi', image: '/categories/sushi.jpg', color: '#f59e0b' },
+  { id: 'dessert', name: 'Dessert', image: '/categories/dessert.jpg', color: '#ec4899' },
+  { id: 'asian', name: 'Asian', image: '/categories/asian.jpg', color: '#8b5cf6' },
+  { id: 'cafe', name: 'Cafe', image: '/categories/cafe.jpg', color: '#10b981' },
 ];
 
 export const searchCategories = [
