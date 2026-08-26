@@ -6,9 +6,8 @@ import Image from 'next/image';
 export interface Category {
   id: string;
   name: string;
-  image: string; // Professional image URL
-  icon?: string; // Fallback icon (optional)
-  color?: string; // Accent color
+  image: string; // Local image path
+  color?: string;
 }
 
 interface CategoryChipsProps {
@@ -17,42 +16,42 @@ interface CategoryChipsProps {
   onSelect?: (id: string) => void;
 }
 
-// Professional food photography images (like Talabat/Deliveroo)
+// Local professional AI-generated images
 const defaultCategories: Category[] = [
   { 
     id: 'burgers', 
     name: 'Burgers',
-    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f93f6c0e43fe.jpg',
+    image: '/categories/burgers.png',
     color: '#ff6b35'
   },
   { 
     id: 'pizza', 
     name: 'Pizza',
-    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/358a85647974.jpeg',
+    image: '/categories/pizza.png',
     color: '#d41b3c'
   },
   { 
     id: 'sushi', 
     name: 'Sushi',
-    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d58b691c1c9b.jpg',
+    image: '/categories/sushi.png',
     color: '#f59e0b'
   },
   { 
     id: 'dessert', 
     name: 'Dessert',
-    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7213c2e11ac8.jpg',
+    image: '/categories/dessert.png',
     color: '#ec4899'
   },
   { 
     id: 'asian', 
     name: 'Asian',
-    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8fa7c2e5ec65.jpg',
+    image: '/categories/asian.png',
     color: '#8b5cf6'
   },
   { 
     id: 'cafe', 
     name: 'Cafe',
-    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5e8a9ff61344.jpg',
+    image: '/categories/cafe.png',
     color: '#10b981'
   },
 ];
@@ -112,11 +111,12 @@ export function CategoryChips({
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
                 sizes="64px"
-                loading="lazy"
+                loading="eager"
+                priority={categories.indexOf(category) < 3}
               />
               
-              {/* Subtle gradient overlay for text readability if needed */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
+              {/* Subtle gradient overlay for depth */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors rounded-2xl" />
             </div>
             
             {/* Label */}
