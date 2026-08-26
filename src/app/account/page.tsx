@@ -3,25 +3,42 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useAuthStore, type UserProfile, type UserAddress } from '@/lib/store/auth-store';
 import { toast } from 'sonner';
 import { TopAppBar } from '@/components/layout/TopAppBar';
 import { BottomNav } from '@/components/layout/BottomNav';
 
+// Demo user data (no auth dependency)
+const demoUser = {
+  id: '1',
+  name: 'أحمد محمد',
+  email: 'demo@epicurean.com',
+  phone: '+966501234567',
+  avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ahmed',
+  addresses: [
+    {
+      id: 'addr-1',
+      label: 'المنزل',
+      address: '124 Main Street, Downtown',
+      apartment: 'شقة 5، الطابق 3',
+      isDefault: true,
+    },
+    {
+      id: 'addr-2',
+      label: 'العمل',
+      address: 'Business Tower, King Fahd Road',
+      isDefault: false,
+    },
+  ],
+  createdAt: '2024-01-15T10:00:00Z',
+};
+
 export default function AccountPage() {
   const router = useRouter();
-  const { user, isAuthenticated, logout, updateProfile, addAddress, removeAddress, setDefaultAddress } = useAuthStore();
   
-  // Redirect if not authenticated
-  React.useEffect(() => {
-    if (!isAuthenticated) {
-      router.push('/login');
-    }
-  }, [isAuthenticated, router]);
-
   const [activeTab, setActiveTab] = useState<'profile' | 'addresses' | 'settings'>('profile');
+  const [user, setUser] = useState(demoUser);
   const [isEditing, setIsEditing] = useState(false);
-  const [editForm, setEditForm] = useState<Partial<UserProfile>>({});
+  const [editForm, setEditForm] = useState<Partial<typeof demoUser>>({});
   const [showAddAddress, setShowAddAddress] = useState(false);
   const [newAddress, setNewAddress] = useState({
     label: '',
@@ -31,21 +48,18 @@ export default function AccountPage() {
   });
 
   const handleLogout = () => {
-    if (confirm('هل تريد تسجيل الخروج؟')) {
-      logout();
-      toast.success('تم تسجيل الخروج', {
-        style: {
-          background: '#5f5e5e',
-          color: '#ffffff',
-          borderRadius: '12px',
-        },
-      });
-      router.push('/');
-    }
+    toast.success('تم تسجيل الخروج (تجريبي)', {
+      style: {
+        background: '#5f5e5e',
+        color: '#ffffff',
+        borderRadius: '12px',
+      },
+    });
+    router.push('/');
   };
 
   const handleSaveProfile = () => {
-    updateProfile(editForm);
+    setUser(prev => ({ ...prev, ...editForm }));
     setIsEditing(false);
     toast.success('تم تحديث الملف الشخصي', {
       style: {
@@ -62,7 +76,13 @@ export default function AccountPage() {
       return;
     }
     
-    addAddress(newAddress);
+    const addressToAdd = { ...newAddress, id: `addr-${Date.now()}` };
+    
+    setUser(prev => ({
+      ...prev,
+      addresses: [...prev.addresses, addressToAdd]
+    }));
+    
     setNewAddress({ label: '', address: '', apartment: '', isDefault: false });
     setShowAddAddress(false);
     toast.success('تمت إضافة العنوان', {
@@ -73,14 +93,6 @@ export default function AccountPage() {
       },
     });
   };
-
-  if (!isAuthenticated || !user) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <span className="material-symbols-outlined animate-spin text-primary text-4xl">progress_activity</span>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

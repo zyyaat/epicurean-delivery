@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useAuthStore } from '@/lib/store/auth-store';
 import { useCartStore } from '@/lib/store/cart-store';
 import { toast } from 'sonner';
 import { TopAppBar } from '@/components/layout/TopAppBar';
@@ -71,26 +70,10 @@ const statusConfig: Record<OrderStatus, { label: string; color: string; icon: st
 
 export default function OrdersPage() {
   const router = useRouter();
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const addItem = useCartStore((state) => state.addItem);
   
   const [selectedOrder, setSelectedOrder] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<'all' | OrderStatus>('all');
-  const [mounted, setMounted] = useState(false);
-  const [shouldRedirect, setShouldRedirect] = useState(false);
-
-  // Handle hydration - wait for client mount
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Check auth after mount
-  useEffect(() => {
-    if (mounted && !isAuthenticated) {
-      setShouldRedirect(true);
-      router.push('/login');
-    }
-  }, [mounted, isAuthenticated, router]);
 
   const handleReorder = (orderId: string) => {
     const order = mockOrders.find(o => o.id === orderId);
@@ -124,11 +107,6 @@ export default function OrdersPage() {
   const filteredOrders = activeFilter === 'all' 
     ? mockOrders 
     : mockOrders.filter(o => o.status === activeFilter);
-
-  // Show nothing while redirecting
-  if (!mounted || shouldRedirect) {
-    return null;
-  }
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -219,7 +197,7 @@ interface OrderCardProps {
 }
 
 function OrderCard({ order, isExpanded, onToggle, onReorder }: OrderCardProps) {
-  const status = statusConfig[order.status];
+  const status = statusConfig[order.status] || statusConfig.delivered;
   const orderDate = new Date(order.date);
   
   return (
