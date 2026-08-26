@@ -278,14 +278,12 @@ export default function CartPage() {
 
         {/* Promotions Section - Modern card */}
         {items.length > 0 && (
-          <section className="card-modern p-6 animate-slide-up">
-            <h3 className="font-title-lg text-title-lg text-on-background mb-4 text-lg flex items-center gap-3">
-              <span className="w-10 h-10 rounded-xl bg-warning/10 flex items-center justify-center">
-                <span className="material-symbols-outlined text-warning text-[22px]" data-icon="local_offer" style={{ fontVariationSettings: "'FILL' 1" }}>local_offer</span>
-              </span>
+          <section className="card-modern p-5 animate-slide-up">
+            <h3 className="font-title-lg text-title-lg text-on-background mb-3 text-base flex items-center gap-2">
+              <span className="material-symbols-outlined text-warning text-[20px]" data-icon="local_offer" style={{ fontVariationSettings: "'FILL' 1" }}>local_offer</span>
               Promotions
             </h3>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="text"
                 value={promoCode}
@@ -296,31 +294,26 @@ export default function CartPage() {
                 placeholder="Enter promo code"
                 disabled={promoApplied}
                 className="
-                  flex-grow bg-surface-container-lowest border-2 border-surface-container-high rounded-2xl px-5 py-3.5 
+                  flex-grow bg-surface-container-lowest border border-surface-container-high rounded-xl px-4 py-3 
                   font-body-md text-body-md text-on-background placeholder:text-secondary/60 
                   focus:outline-none focus:border-primary/40 focus:bg-white focus:shadow-search
-                  transition-all duration-300 disabled:opacity-60
+                  transition-all duration-200 disabled:opacity-60 text-sm
                 "
               />
               <button
                 onClick={handleApplyPromo}
                 disabled={promoApplied || !promoCode.trim()}
                 className={`
-                  font-label-md text-label-md px-7 py-3.5 rounded-2xl whitespace-nowrap
-                  transition-all duration-300 press-effect
+                  font-label-md text-label-md px-5 py-3 rounded-xl whitespace-nowrap
+                  transition-all duration-200 press-effect text-sm
                   ${promoApplied 
-                    ? 'bg-success-light text-success font-bold border-2 border-success/30' 
+                    ? 'bg-success-light text-success font-bold border border-success/30' 
                     : 'gradient-primary text-white hover:shadow-glow active:scale-95'
                   }
-                  disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none
+                  disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none w-full sm:w-auto
                 `}
               >
-                {promoApplied ? (
-                  <span className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[18px]" data-icon="check_circle" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                    Applied
-                  </span>
-                ) : 'Apply'}
+                {promoApplied ? '✓ Applied' : 'Apply'}
               </button>
             </div>
           </section>
