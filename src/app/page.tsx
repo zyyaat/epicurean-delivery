@@ -119,7 +119,7 @@ export default function HomePage() {
         </section>
 
         {/* Featured Restaurants Section - Matching Original Design */}
-        <section className="flex flex-col gap-lg">
+        <section className="flex flex-col gap-xl">
           {/* Section Header */}
           <div className="flex justify-between items-end">
             <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">
@@ -134,8 +134,8 @@ export default function HomePage() {
             </button>
           </div>
           
-          {/* Restaurant Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+          {/* Restaurant Grid - Generous spacing for breathing room */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {featuredRestaurants.map((restaurant) => (
               <RestaurantCard
                 key={restaurant.id}

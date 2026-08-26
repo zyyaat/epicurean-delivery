@@ -91,7 +91,7 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
       </div>
       
       {/* Content - Modern spacing and typography */}
-      <div className="p-5 flex flex-col gap-3 flex-grow">
+      <div className="p-6 flex flex-col gap-3.5 flex-grow">
         {/* Header Row */}
         <div className="flex justify-between items-start gap-3">
           <h3 className="font-title-lg text-title-lg text-on-background line-clamp-1 group-hover:text-primary transition-colors">
