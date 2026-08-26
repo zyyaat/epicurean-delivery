@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { TopAppBar } from '@/components/layout/TopAppBar';
 import { BottomNav } from '@/components/layout/BottomNav';
@@ -10,7 +10,7 @@ import { searchCategories, featuredRestaurants } from '@/lib/data/mock-data';
 import type { NavItem } from '@/components/layout/BottomNav';
 import { RestaurantCard } from '@/components/home/RestaurantCard';
 
-export default function SearchPage() {
+function SearchContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [activeNav] = useState<NavItem>('search');
@@ -130,5 +130,40 @@ export default function SearchPage() {
         onNavigate={handleNavClick}
       />
     </div>
+  );
+}
+
+// Loading fallback for Suspense
+function SearchLoading() {
+  return (
+    <div className="min-h-screen bg-background flex flex-col">
+      <TopAppBar onMenuClick={() => {}} />
+      <main className="flex-1 max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+        <div className="animate-pulse space-y-8">
+          {/* Search skeleton */}
+          <div className="h-14 bg-surface-low rounded-xl" />
+          {/* Banner skeleton */}
+          <div className="h-48 bg-surface-low rounded-xl" />
+          {/* Categories skeleton */}
+          <div>
+            <div className="h-8 bg-surface-low rounded w-48 mb-4" />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="h-24 bg-surface-low rounded-xl" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </main>
+      <BottomNav activeItem="search" onNavigate={() => {}} />
+    </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<SearchLoading />}>
+      <SearchContent />
+    </Suspense>
   );
 }
