@@ -1,13 +1,11 @@
 'use client';
 
 import React from 'react';
-// Using standard img tag for better compatibility
-// import Image from 'next/image';
 
 export interface Category {
   id: string;
   name: string;
-  image: string; // Local image path
+  image: string;
   color?: string;
 }
 
@@ -92,31 +90,21 @@ export function CategoryChips({
               />
             )}
             
-            {/* Image Container - Circular with shadow */}
+            {/* Image Container - Using background image for reliability */}
             <div 
               className={`
                 w-16 h-16 rounded-2xl overflow-hidden relative
-                transition-all duration-500 ease-out
+                transition-all duration-500 ease-out bg-cover bg-center
                 ${isActive ? 'shadow-glow scale-105 ring-2 ring-offset-2' : 'shadow-md group-hover:scale-105 group-hover:shadow-lg'}
               `}
               style={{ 
+                backgroundImage: `url('${category.image}')`,
                 ringColor: isActive ? categoryColor : 'transparent',
                 boxShadow: isActive 
                   ? `0 8px 24px ${categoryColor}40` 
                   : '0 4px 12px rgba(0,0,0,0.1)'
               }}
-            >
-              <img
-                src={category.image}
-                alt={category.name}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                loading="eager"
-                decoding="async"
-              />
-              
-              {/* Subtle gradient overlay for depth */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors rounded-2xl" />
-            </div>
+            />
             
             {/* Label */}
             <span className={`
