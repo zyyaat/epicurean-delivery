@@ -738,21 +738,25 @@
    Truncates from END not START
    ============================================ */
 .truncate-ltr {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  direction: ltr !important;
+  unicode-bidi: bidi-override !important;
+  text-align: left !important;
+  display: block !important;
+  max-width: 100%;
+  /* Force isolation from parent RTL context */
+}
+
+/* Alternative: Use for elements inside RTL containers */
+.truncate-safe {
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  direction: ltr !important;
-  text-align: left;
+  /* Create new formatting context */
+  direction: ltr;
   unicode-bidi: isolate;
-  display: block;
-}
-
-.truncate-ltr-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  direction: ltr !important;
-  text-align: left;
-  unicode-bidi: isolate;
+  text-align: start;
 }
