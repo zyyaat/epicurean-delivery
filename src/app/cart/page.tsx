@@ -6,6 +6,7 @@ import { TopAppBar } from '@/components/layout/TopAppBar';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { useCartStore } from '@/lib/store/cart-store';
 import type { NavItem } from '@/components/layout/BottomNav';
+import { toast } from 'sonner';
 
 export default function CartPage() {
   const router = useRouter();
@@ -32,7 +33,16 @@ export default function CartPage() {
   const handleApplyPromo = () => {
     if (promoCode.trim()) {
       setPromoApplied(true);
-      alert(`✅ Promo code "${promoCode}" applied! (Demo)`);
+      toast.success(`تم تطبيق الكود: ${promoCode}`, {
+        duration: 2000,
+        position: 'bottom-center',
+        style: {
+          background: '#b90027',
+          color: '#ffffff',
+          borderRadius: '12px',
+          fontFamily: 'Inter, sans-serif',
+        },
+      });
     }
   };
 
@@ -40,10 +50,19 @@ export default function CartPage() {
     if (items.length === 0) return;
     
     // Show checkout confirmation
-    const confirmed = confirm(`Proceed to checkout?\n\nTotal: $${total.toFixed(2)}\n\nItems: ${items.length}`);
+    const confirmed = confirm(`متابعة للدفع؟\n\nالإجمالي: $${total.toFixed(2)}\n\nعدد المنتجات: ${items.length}`);
     
     if (confirmed) {
-      alert('🎉 Order placed successfully!\n\nThis is a demo - in production this would redirect to payment.');
+      toast.success('تم الطلب بنجاح! 🎉', {
+        duration: 3000,
+        position: 'bottom-center',
+        style: {
+          background: '#b90027',
+          color: '#ffffff',
+          borderRadius: '12px',
+          fontFamily: 'Inter, sans-serif',
+        },
+      });
       clearCart();
       router.push('/');
     }
@@ -118,15 +137,15 @@ export default function CartPage() {
             </div>
           ) : (
             items.map((item) => (
-              /* Cart Item - Matching Original Design Exactly */
+              /* Cart Item - Improved Design */
               <article
                 key={item.id}
-                className="flex gap-md bg-surface p-sm rounded-xl shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] border border-surface-variant"
+                className="flex gap-3 bg-surface p-3 rounded-xl shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] border border-surface-variant"
               >
                 {/* Item Image */}
                 <div 
-                  className="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden relative bg-surface-container-low cursor-pointer"
-                  onClick={() => alert(`View ${item.name} details`)}
+                  className="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden relative bg-surface-container-low cursor-pointer"
+                  onClick={() => {}}
                 >
                   <img
                     src={item.image}
@@ -136,21 +155,18 @@ export default function CartPage() {
                 </div>
 
                 {/* Item Details */}
-                <div className="flex flex-col justify-between flex-grow py-1">
+                <div className="flex flex-col justify-between flex-grow py-1 min-w-0">
                   {/* Name & Price Row */}
                   <div className="flex justify-between items-start gap-2">
-                    <div 
-                      className="cursor-pointer"
-                      onClick={() => alert(`View ${item.name} details`)}
-                    >
-                      <h3 className="font-title-lg text-title-lg text-on-background line-clamp-1 text-base">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-title-lg text-title-lg text-on-background text-sm font-semibold truncate">
                         {item.name}
                       </h3>
                       <p className="font-body-md text-body-md text-secondary line-clamp-1 text-xs mt-0.5">
                         {item.description}
                       </p>
                     </div>
-                    <span className="font-title-lg text-title-lg text-on-background text-base shrink-0">
+                    <span className="font-title-lg text-title-lg text-on-background text-sm font-semibold shrink-0">
                       ${(item.price * item.quantity).toFixed(2)}
                     </span>
                   </div>
@@ -159,7 +175,19 @@ export default function CartPage() {
                   <div className="flex justify-between items-center mt-2">
                     {/* Remove Button */}
                     <button
-                      onClick={() => removeItem(item.id)}
+                      onClick={() => {
+                        removeItem(item.id);
+                        toast.error('تم الحذف', {
+                          duration: 1500,
+                          position: 'bottom-center',
+                          style: {
+                            background: '#ba1a1a',
+                            color: '#ffffff',
+                            borderRadius: '12px',
+                            fontFamily: 'Inter, sans-serif',
+                          },
+                        });
+                      }}
                       className="text-secondary hover:text-error transition-colors text-xs font-label-md text-label-md flex items-center gap-1"
                     >
                       <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>

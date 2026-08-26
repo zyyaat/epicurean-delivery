@@ -6,6 +6,7 @@ import { TopAppBar } from '@/components/layout/TopAppBar';
 import { BottomNav } from '@/components/layout/BottomNav';
 import { useCartStore } from '@/lib/store/cart-store';
 import type { NavItem } from '@/components/layout/BottomNav';
+import { toast } from 'sonner';
 
 // Mock restaurant data - in real app this would come from API
 const restaurantsData: Record<string, any> = {
@@ -128,8 +129,17 @@ export default function RestaurantPage() {
       image: item.image,
     });
     
-    // Show feedback
-    alert(`✅ Added "${item.name}" to cart!`);
+    // Show subtle toast notification instead of alert
+    toast.success(`تمت الإضافة: ${item.name}`, {
+      duration: 2000,
+      position: 'bottom-center',
+      style: {
+        background: '#b90027',
+        color: '#ffffff',
+        borderRadius: '12px',
+        fontFamily: 'Inter, sans-serif',
+      },
+    });
   };
 
   const handleBack = () => {
