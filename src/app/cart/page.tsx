@@ -155,114 +155,125 @@ export default function CartPage() {
             </div>
           ) : (
             items.map((item, index) => (
-              /* Cart Item - Modern card design */
+              /* Cart Item - Fixed layout for proper text display */
               <article
                 key={item.id}
-                className={`
-                  flex gap-4 bg-white rounded-[20px] p-4 
+                className="
+                  bg-white rounded-[20px] p-4 
                   shadow-card hover:shadow-card-hover
                   border border-surface-container/50
                   transition-all duration-300 ease-out
                   hover-lift animate-slide-up
-                `}
+                "
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                {/* Item Image - Modern with subtle border */}
-                <div 
-                  className="w-20 h-20 flex-shrink-0 rounded-2xl overflow-hidden relative 
-                    bg-gradient-to-br from-surface-container-low to-surface-container
-                    cursor-pointer group/image"
-                  onClick={() => {}}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover group-hover/image:scale-110 transition-transform duration-500"
-                  />
-                  {/* Subtle overlay on hover */}
-                  <div className="absolute inset-0 bg-black/0 group-hover/image:bg-black/5 transition-colors rounded-2xl" />
-                </div>
-
-                {/* Item Details */}
-                <div className="flex flex-col justify-between flex-grow py-1 min-w-0">
-                  {/* Name & Price Row */}
-                  <div className="flex justify-between items-start gap-3">
-                    <div className="min-w-0 flex-1">
-                      <h3 className="font-title-lg text-title-lg text-on-background font-semibold truncate">
-                        {item.name}
-                      </h3>
-                      <p className="font-body-md text-body-md text-secondary line-clamp-1 mt-1">
-                        {item.description}
-                      </p>
-                    </div>
-                    <span className="font-title-lg text-primary text-lg font-bold shrink-0 tabular-nums">
-                      ${(item.price * item.quantity).toFixed(2)}
-                    </span>
+                {/* Main Content Row - Image + Details */}
+                <div className="flex gap-4">
+                  {/* Item Image - Fixed size, won't shrink */}
+                  <div 
+                    className="w-[88px] h-[88px] flex-shrink-0 rounded-2xl overflow-hidden relative 
+                      bg-gradient-to-br from-surface-container-low to-surface-container
+                      cursor-pointer"
+                    onClick={() => {}}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
 
-                  {/* Actions Row */}
-                  <div className="flex justify-between items-center mt-3">
-                    {/* Remove Button - Soft style */}
-                    <button
-                      onClick={() => {
-                        removeItem(item.id);
-                        toast.error('تم الحذف', {
-                          duration: 1500,
-                          position: 'bottom-center',
-                          style: {
-                            background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
-                            color: '#ffffff',
-                            borderRadius: '14px',
-                            fontFamily: 'Inter, sans-serif',
-                            fontWeight: 600,
-                            boxShadow: '0 8px 24px rgba(220, 38, 38, 0.25)',
-                          },
-                        });
-                      }}
-                      className="
-                        text-secondary hover:text-error 
-                        transition-colors text-xs font-label-md 
-                        flex items-center gap-1.5 px-2 py-1.5 rounded-lg
-                        hover:bg-error-container/30 press-effect
-                      "
-                    >
-                      <span className="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
-                      Remove
-                    </button>
-
-                    {/* Quantity Control - Modern pill design */}
-                    <div className="
-                      flex items-center bg-surface-container-low rounded-full px-3 py-1.5 gap-1
-                      border border-surface-container-high shadow-modern
-                    ">
-                      <button
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="
-                          text-on-surface-variant hover:text-primary 
-                          transition-all duration-200 
-                          flex items-center justify-center w-7 h-7 rounded-full
-                          hover:bg-primary/10 active:scale-90 press-effect
-                        "
-                        disabled={item.quantity <= 1}
-                      >
-                        <span className="material-symbols-outlined text-[20px]" data-icon="remove">remove</span>
-                      </button>
-                      
-                      <span className="font-title-lg text-on-background text-base w-5 text-center font-bold tabular-nums">
-                        {item.quantity}
+                  {/* Item Details - Takes remaining space */}
+                  <div className="flex flex-col justify-between flex-1 min-w-0 py-0.5">
+                    {/* Price at top right - RTL appropriate */}
+                    <div className="flex justify-between items-start gap-2 mb-1">
+                      {/* Name & Description - Gets most space */}
+                      <div className="flex-1 min-w-0 mr-2">
+                        <h3 
+                          className="font-title-lg text-title-lg text-on-background font-semibold 
+                            overflow-hidden text-ellipsis whitespace-nowrap"
+                          dir="rtl"
+                          title={item.name}
+                        >
+                          {item.name}
+                        </h3>
+                        <p 
+                          className="font-body-md text-body-md text-secondary mt-0.5
+                            overflow-hidden text-ellipsis whitespace-nowrap"
+                          dir="rtl"
+                          title={item.description}
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+                      {/* Price - Fixed width, won't push content */}
+                      <span className="text-primary text-lg font-bold shrink-0 tabular-nums font-title-lg">
+                        ${(item.price * item.quantity).toFixed(2)}
                       </span>
-                      
+                    </div>
+
+                    {/* Actions Row - Remove + Quantity */}
+                    <div className="flex justify-between items-center mt-2">
+                      {/* Remove Button */}
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        onClick={() => {
+                          removeItem(item.id);
+                          toast.error('تم الحذف', {
+                            duration: 1500,
+                            position: 'bottom-center',
+                            style: {
+                              background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+                              color: '#ffffff',
+                              borderRadius: '14px',
+                              fontFamily: 'Inter, sans-serif',
+                              fontWeight: 600,
+                              boxShadow: '0 8px 24px rgba(220, 38, 38, 0.25)',
+                            },
+                          });
+                        }}
                         className="
-                          text-on-surface-variant hover:text-primary 
-                          transition-all duration-200 
-                          flex items-center justify-center w-7 h-7 rounded-full
-                          hover:bg-primary/10 active:scale-90 press-effect
+                          text-secondary hover:text-error 
+                          transition-colors text-xs font-label-md 
+                          flex items-center gap-1 px-2.5 py-1.5 rounded-xl
+                          hover:bg-red-50 press-effect
                         "
                       >
-                        <span className="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                        <span className="material-symbols-outlined text-[18px]">delete_outline</span>
+                        <span>حذف</span>
                       </button>
+
+                      {/* Quantity Control */}
+                      <div className="
+                        flex items-center bg-gray-50 rounded-full px-2 py-1 gap-0.5
+                        border border-gray-200
+                      ">
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          className="
+                            w-8 h-8 flex items-center justify-center rounded-full
+                            text-gray-600 hover:text-primary hover:bg-red-50
+                            transition-all active:scale-90
+                          "
+                          disabled={item.quantity <= 1}
+                        >
+                          <span className="material-symbols-outlined text-[20px]">remove</span>
+                        </button>
+                        
+                        <span className="w-6 text-center font-bold text-on-background text-sm tabular-nums">
+                          {item.quantity}
+                        </span>
+                        
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          className="
+                            w-8 h-8 flex items-center justify-center rounded-full
+                            text-gray-600 hover:text-primary hover:bg-red-50
+                            transition-all active:scale-90
+                          "
+                        >
+                          <span className="material-symbols-outlined text-[20px]">add</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
