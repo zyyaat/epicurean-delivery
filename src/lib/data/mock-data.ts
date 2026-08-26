@@ -11,12 +11,7 @@ export const categories: Category[] = [
 ];
 
 export const searchCategories = [
-  { id: 'halal', name: 'Halal', icon: 'kebab_dining', color: 'bg-error-container text-primary' },
-  { id: 'asian', name: 'Asian', icon: 'ramen_dining', color: 'bg-secondary-container text-on-secondary-container' },
-  { id: 'healthy', name: 'Healthy', icon: 'eco', color: 'bg-surface-container-high text-tertiary' },
-  { id: 'fast-food', name: 'Fast Food', icon: 'fastfood', color: 'bg-surface-variant text-on-surface-variant' },
-  { id: 'desserts', name: 'Desserts', icon: 'icecream', color: 'bg-error-container text-primary' },
-  { id: 'drinks', name: 'Drinks', icon: 'local_cafe', color: 'bg-secondary-container text-on-secondary-container' },
+  // Categories removed - using main categories only
 ];
 
 export const featuredRestaurants: Restaurant[] = [

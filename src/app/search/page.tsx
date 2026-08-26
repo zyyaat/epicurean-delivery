@@ -289,42 +289,44 @@ function SearchContent() {
           </section>
         )}
 
-        {/* Featured Promo Banner */}
+        {/* Featured Promo Banner - Professional AI Generated Image */}
         <section 
-          className="w-full rounded-xl overflow-hidden relative h-48 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] isolate group cursor-pointer"
-          onClick={() => alert('Trending items would show here 🔥')}
+          className="w-full rounded-2xl overflow-hidden relative h-52 md:h-60 shadow-[0_8px_30px_0_rgba(0,0,0,0.12)] isolate group cursor-pointer"
+          onClick={() => router.push('/search?category=trending')}
         >
           <div 
-            className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500 -z-10"
+            className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700 -z-10"
             style={{
-              backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgTN6qls2werQbQTHRTDPhIokaEP_NCqEgeoP8eMLvLhfkqeagywr8O6cuwcc5HtrkUQ8mxZsIE4hVGAHdUir3011I4SoGviRIilsXBRoKDzg0cS3G50Vsb6BR2lWb2P4dq2gueOuscxRNMvHNGzmQrWq89Dd0YCYgO6mzfgvFHBd6q0lFcnqLBEWKxc8N8NL8wXf2oSIBWoMn0LDn2y9x-hyowYjM9reGlimuhmjue-EH_0oz7YKDIA')`
+              backgroundImage: `url('/images/fresh-bowls-banner.jpg')`
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent -z-10" />
-          <div className="h-full flex flex-col justify-center p-lg w-2/3">
-            <span className="inline-block bg-primary text-on-primary font-label-md text-label-md px-2 py-1 rounded-full w-max mb-sm uppercase tracking-wider">
-              Trending
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-transparent -z-10" />
+          <div className="h-full flex flex-col justify-center p-6 md:p-8 w-2/3 md:w-1/2">
+            <span className="inline-block gradient-primary text-white font-label-lg text-label-lg px-4 py-1.5 rounded-full w-max mb-3 uppercase tracking-wider shadow-glow">
+              🔥 Trending
             </span>
-            <h2 className="font-headline-md text-headline-md text-on-background mb-xs">
-              Fresh Bowls
+            <h2 className="font-headline-lg-mobile md:font-headline-lg text-on-background mb-2 drop-shadow-sm">
+              Fresh & Delicious
             </h2>
-            <p className="font-body-md text-body-md text-secondary">
-              Discover vibrant, healthy options near you.
+            <p className="font-body-md text-body-md text-secondary/90">
+              اكتشف أطباق طازجة ولذيذة قريب منك
             </p>
           </div>
         </section>
 
-        {/* Categories Grid */}
-        <section className="w-full flex flex-col gap-md">
-          <h2 className="font-headline-md text-headline-md text-on-background">
-            Explore Categories
-          </h2>
-          <CategoryGrid 
-            categories={searchCategories}
-            activeCategory={activeCategory}
-            onSelect={handleCategorySelect}
-          />
-        </section>
+        {/* Categories Grid - Only show if categories exist */}
+        {searchCategories.length > 0 && (
+          <section className="w-full flex flex-col gap-md">
+            <h2 className="font-headline-md text-headline-md text-on-background">
+              Explore Categories
+            </h2>
+            <CategoryGrid 
+              categories={searchCategories}
+              activeCategory={activeCategory}
+              onSelect={handleCategorySelect}
+            />
+          </section>
+        )}
 
         {/* Results Section */}
         <section className="flex flex-col gap-lg">
