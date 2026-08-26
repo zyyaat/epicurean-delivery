@@ -8,7 +8,8 @@ import { SearchBar } from '@/components/search/SearchBar';
 import { CategoryChips } from '@/components/home/CategoryChips';
 import { RestaurantCard } from '@/components/home/RestaurantCard';
 import { useCartStore } from '@/lib/store/cart-store';
-import { toast } from 'sonner';
+import { useLocationStore } from '@/lib/store/location-store';
+import { LocationPicker } from '@/components/location/LocationPicker';
 import { 
   featuredRestaurants, 
   categories,
@@ -19,7 +20,9 @@ export default function HomePage() {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState<string | undefined>();
   const [activeNav, setActiveNav] = useState<NavItem>('home');
+  const [isLocationOpen, setIsLocationOpen] = useState(false);
   const totalItems = useCartStore((state) => state.getTotalItems());
+  const currentLocation = useLocationStore((state) => state.currentLocation);
   
   const handleRestaurantClick = useCallback((id: string) => {
     router.push(`/restaurant/${id}`);
@@ -69,22 +72,13 @@ export default function HomePage() {
         
         {/* Location & Search Section */}
         <section className="flex flex-col gap-md">
-          {/* Location Selector */}
+          {/* Location Selector - Opens Location Picker Modal */}
           <div 
             className="flex items-center gap-sm text-secondary hover:text-on-background transition-colors cursor-pointer w-fit press-effect"
-            onClick={() => toast.info('Location picker coming soon! 📍', {
-              duration: 2000,
-              position: 'bottom-center',
-              style: {
-                background: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)',
-                color: '#ffffff',
-                borderRadius: '14px',
-                fontFamily: 'Inter, sans-serif',
-              },
-            })}
+            onClick={() => setIsLocationOpen(true)}
           >
             <span 
-              className="material-symbols-outlined text-primary"
+              className="material-symbols-outlined text-primary animate-pulse"
               style={{ fontVariationSettings: "'FILL' 1" }}
             >
               location_on
@@ -92,7 +86,7 @@ export default function HomePage() {
             <div className="flex flex-col">
               <span className="font-label-md text-label-md uppercase text-secondary">Delivering to</span>
               <span className="font-title-lg text-title-lg text-on-background flex items-center gap-xs">
-                124 Main Street
+                {currentLocation?.address || 'Select Location'}
                 <span className="material-symbols-outlined">expand_more</span>
               </span>
             </div>
@@ -153,6 +147,12 @@ export default function HomePage() {
       {/* Bottom Navigation */}
       <BottomNav 
         activeItem={activeNav}
+      />
+
+      {/* Location Picker Modal */}
+      <LocationPicker
+        isOpen={isLocationOpen}
+        onClose={() => setIsLocationOpen(false)}
       />
     </div>
   );
