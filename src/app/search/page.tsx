@@ -289,28 +289,41 @@ function SearchContent() {
           </section>
         )}
 
-        {/* Featured Promo Banner - Professional AI Generated Image */}
+        {/* Featured Promo Banner - Frosted Glass Design */}
         <section 
-          className="w-full rounded-2xl overflow-hidden relative h-52 md:h-60 shadow-[0_8px_30px_0_rgba(0,0,0,0.12)] isolate group cursor-pointer"
+          className="w-full rounded-2xl overflow-hidden relative h-56 md:h-64 shadow-[0_8px_30px_0_rgba(0,0,0,0.12)] isolate group cursor-pointer"
           onClick={() => router.push('/search?category=trending')}
         >
+          {/* Background Image - Full Coverage */}
           <div 
-            className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700 -z-10"
+            className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-1000 ease-out"
             style={{
               backgroundImage: `url('/images/fresh-bowls-banner.jpg')`
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-transparent -z-10" />
-          <div className="h-full flex flex-col justify-center p-6 md:p-8 w-2/3 md:w-1/2">
-            <span className="inline-block gradient-primary text-white font-label-lg text-label-lg px-4 py-1.5 rounded-full w-max mb-3 uppercase tracking-wider shadow-glow">
-              🔥 Trending
+          
+          {/* Semi-transparent Overlay - Muted Effect */}
+          <div className="absolute inset-0 bg-white/65 backdrop-blur-[2px] -z-0" />
+          
+          {/* Subtle gradient for depth */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-gray-100/30 -z-0" />
+          
+          {/* Content Layer */}
+          <div className="relative h-full flex flex-col justify-center p-6 md:p-8">
+            <span className="inline-block gradient-primary text-white font-label-lg text-label-lg px-4 py-2 rounded-full w-max mb-4 uppercase tracking-wider shadow-glow animate-pulse">
+              🔥 Trending Now
             </span>
-            <h2 className="font-headline-lg-mobile md:font-headline-lg text-on-background mb-2 drop-shadow-sm">
+            <h2 className="font-headline-xl-mobile md:font-headline-xl text-on-background mb-3">
               Fresh & Delicious
             </h2>
-            <p className="font-body-md text-body-md text-secondary/90">
-              اكتشف أطباق طازجة ولذيذة قريب منك
+            <p className="font-body-lg text-body-lg text-secondary max-w-md leading-relaxed">
+              اكتشف أطباق طازجة ولذيذة قريب منك 🍽️
             </p>
+            
+            {/* Decorative element */}
+            <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 opacity-20">
+              <span className="material-symbols-outlined text-[120px] md:text-[160px] text-primary">restaurant</span>
+            </div>
           </div>
         </section>
 
