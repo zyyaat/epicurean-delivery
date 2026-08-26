@@ -289,9 +289,9 @@ function SearchContent() {
           </section>
         )}
 
-        {/* Featured Promo Banner - Frosted Glass Design */}
+        {/* Featured Promo Banner - Dark Frosted Glass Design */}
         <section 
-          className="w-full rounded-2xl overflow-hidden relative h-56 md:h-64 shadow-[0_8px_30px_0_rgba(0,0,0,0.12)] isolate group cursor-pointer"
+          className="w-full rounded-2xl overflow-hidden relative h-56 md:h-64 shadow-[0_8px_30px_0_rgba(0,0,0,0.3)] isolate group cursor-pointer"
           onClick={() => router.push('/search?category=trending')}
         >
           {/* Background Image - Full Coverage */}
@@ -302,27 +302,27 @@ function SearchContent() {
             }}
           />
           
-          {/* Semi-transparent Overlay - Muted Effect */}
-          <div className="absolute inset-0 bg-white/65 backdrop-blur-[2px] -z-0" />
+          {/* Dark Semi-transparent Overlay - Dramatic Effect */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[3px] -z-0" />
           
           {/* Subtle gradient for depth */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-gray-100/30 -z-0" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-gray-900/20 -z-0" />
           
-          {/* Content Layer */}
+          {/* Content Layer - White text on dark */}
           <div className="relative h-full flex flex-col justify-center p-6 md:p-8">
             <span className="inline-block gradient-primary text-white font-label-lg text-label-lg px-4 py-2 rounded-full w-max mb-4 uppercase tracking-wider shadow-glow animate-pulse">
               🔥 Trending Now
             </span>
-            <h2 className="font-headline-xl-mobile md:font-headline-xl text-on-background mb-3">
+            <h2 className="font-headline-xl-mobile md:font-headline-xl text-white mb-3 drop-shadow-lg">
               Fresh & Delicious
             </h2>
-            <p className="font-body-lg text-body-lg text-secondary max-w-md leading-relaxed">
+            <p className="font-body-lg text-body-lg text-white/80 max-w-md leading-relaxed">
               اكتشف أطباق طازجة ولذيذة قريب منك 🍽️
             </p>
             
             {/* Decorative element */}
-            <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 opacity-20">
-              <span className="material-symbols-outlined text-[120px] md:text-[160px] text-primary">restaurant</span>
+            <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 opacity-10">
+              <span className="material-symbols-outlined text-[120px] md:text-[160px] text-white">restaurant</span>
             </div>
           </div>
         </section>
