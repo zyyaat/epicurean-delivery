@@ -344,7 +344,6 @@ export default function CartPage() {
       {items.length === 0 && (
         <BottomNav 
           activeItem={activeNav}
-          onNavigate={handleNavClick}
         />
       )}
     </div>

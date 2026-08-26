@@ -1,42 +1,67 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/lib/store/auth-store';
 
 export type NavItem = 'home' | 'search' | 'orders' | 'account';
 
 interface BottomNavProps {
   activeItem?: NavItem;
-  onNavigate?: (item: NavItem) => void;
 }
 
 const navItems = [
   { 
     id: 'home' as NavItem, 
     icon: 'home', 
-    label: 'Home',
-    filledIcon: true
+    label: 'الرئيسية',
   },
   { 
     id: 'search' as NavItem, 
     icon: 'search', 
-    label: 'Search',
-    filledIcon: false
+    label: 'البحث',
   },
   { 
     id: 'orders' as NavItem, 
     icon: 'receipt_long', 
-    label: 'Orders',
-    filledIcon: false
+    label: 'طلباتي',
   },
   { 
     id: 'account' as NavItem, 
     icon: 'person', 
-    label: 'Account',
-    filledIcon: false
+    label: 'حسابي',
   },
 ];
 
-export function BottomNav({ activeItem = 'home', onNavigate }: BottomNavProps) {
+export function BottomNav({ activeItem = 'home' }: BottomNavProps) {
+  const router = useRouter();
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+  const handleNavigate = (item: NavItem) => {
+    switch (item) {
+      case 'home':
+        router.push('/');
+        break;
+      case 'search':
+        router.push('/search');
+        break;
+      case 'orders':
+        if (!isAuthenticated) {
+          router.push('/login');
+        } else {
+          router.push('/orders');
+        }
+        break;
+      case 'account':
+        if (!isAuthenticated) {
+          router.push('/login');
+        } else {
+          router.push('/account');
+        }
+        break;
+    }
+  };
+
   return (
     <nav className="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-4 bg-surface/80 backdrop-blur-md rounded-t-xl shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)]">
       {navItems.map((item) => {
@@ -44,7 +69,7 @@ export function BottomNav({ activeItem = 'home', onNavigate }: BottomNavProps) {
         return (
           <button
             key={item.id}
-            onClick={() => onNavigate?.(item.id)}
+            onClick={() => handleNavigate(item.id)}
             className={`
               flex flex-col items-center justify-center 
               ${isActive 

@@ -404,7 +404,6 @@ export default function RestaurantPage() {
       {/* Bottom Navigation */}
       <BottomNav 
         activeItem={activeNav}
-        onNavigate={handleNavClick}
       />
     </div>
   );

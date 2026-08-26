@@ -143,7 +143,6 @@ export default function HomePage() {
       {/* Bottom Navigation */}
       <BottomNav 
         activeItem={activeNav}
-        onNavigate={handleNavClick}
       />
     </div>
   );
