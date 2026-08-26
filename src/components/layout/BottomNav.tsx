@@ -38,7 +38,7 @@ const navItems = [
 
 export function BottomNav({ activeItem = 'home', onNavigate }: BottomNavProps) {
   return (
-    <nav className="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-4 glass border-t border-surface-variant rounded-t-xl shadow-nav pb-safe">
+    <nav className="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-4 bg-surface/80 backdrop-blur-md rounded-t-xl shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)]">
       {navItems.map((item) => {
         const isActive = activeItem === item.id;
         return (
@@ -47,26 +47,25 @@ export function BottomNav({ activeItem = 'home', onNavigate }: BottomNavProps) {
             onClick={() => onNavigate?.(item.id)}
             className={`
               flex flex-col items-center justify-center 
-              transition-all duration-150 p-2 rounded-xl
               ${isActive 
-                ? 'text-primary' 
+                ? 'text-on-background' 
                 : 'text-secondary hover:bg-surface-container-low'
               }
-              active:scale-90
+              transition-all active:scale-90 p-2 rounded-xl
             `}
             aria-label={item.label}
             aria-current={isActive ? 'page' : undefined}
           >
             <span 
               className={`material-symbols-outlined mb-1 text-[24px] ${
-                isActive ? 'animate-scale-in' : ''
+                isActive ? 'text-primary' : ''
               }`}
               data-icon={item.icon}
-              style={item.filledIcon && isActive ? { fontVariationSettings: "'FILL' 1" } : {}}
+              style={isActive ? { fontVariationSettings: "'FILL' 1" } : {}}
             >
               {item.icon}
             </span>
-            <span className={`font-label-md text-label-md ${isActive ? 'font-semibold' : ''}`}>
+            <span className={`font-label-md text-label-md ${isActive ? 'text-primary' : ''}`}>
               {item.label}
             </span>
           </button>

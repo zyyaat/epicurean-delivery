@@ -25,8 +25,8 @@ export function TopAppBar({
           <span className="material-symbols-outlined" data-icon="menu">menu</span>
         </button>
 
-        {/* Logo */}
-        <h1 className="font-display-lg text-primary font-black text-[24px] leading-tight tracking-tight">
+        {/* Logo - Matching Original Design */}
+        <h1 className="font-display-lg text-display-lg font-black text-primary truncate mx-4">
           Epicurean
         </h1>
 

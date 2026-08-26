@@ -74,9 +74,9 @@ function SearchContent() {
           />
         </section>
 
-        {/* Featured Promo Banner */}
+        {/* Featured Promo Banner - Matching Original Design Exactly */}
         <section 
-          className="w-full rounded-xl overflow-hidden relative h-48 shadow-search isolate group cursor-pointer"
+          className="w-full rounded-xl overflow-hidden relative h-48 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] isolate group cursor-pointer"
           onClick={() => alert('Trending items would show here 🔥')}
         >
           <div 
@@ -87,17 +87,23 @@ function SearchContent() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent -z-10" />
           <div className="h-full flex flex-col justify-center p-lg w-2/3">
-            <span className="inline-block bg-primary text-on-primary font-label-md px-2 py-1 rounded-full w-max mb-sm uppercase tracking-wider text-[10px]">
+            <span className="inline-block bg-primary text-on-primary font-label-md text-label-md px-2 py-1 rounded-full w-max mb-sm uppercase tracking-wider">
               Trending
             </span>
-            <h2 className="text-2xl font-bold text-foreground mb-1">Fresh Bowls</h2>
-            <p className="text-sm text-secondary">Discover vibrant, healthy options near you.</p>
+            <h2 className="font-headline-md text-headline-md text-on-background mb-xs">
+              Fresh Bowls
+            </h2>
+            <p className="font-body-md text-body-md text-secondary">
+              Discover vibrant, healthy options near you.
+            </p>
           </div>
         </section>
 
-        {/* Categories Grid */}
+        {/* Categories Grid - Matching Original Design */}
         <section className="w-full flex flex-col gap-md">
-          <h2 className="text-2xl font-bold text-foreground">Explore Categories</h2>
+          <h2 className="font-headline-md text-headline-md text-on-background">
+            Explore Categories
+          </h2>
           <CategoryGrid 
             categories={searchCategories}
             activeCategory={activeCategory}
@@ -108,7 +114,7 @@ function SearchContent() {
         {/* Show restaurants when searching or category selected */}
         {(searchQuery || activeCategory) && (
           <section className="flex flex-col gap-lg">
-            <h2 className="text-2xl font-bold text-foreground">
+            <h2 className="font-headline-md text-headline-md text-on-background">
               {searchQuery ? `Results for "${searchQuery}"` : 'Restaurants'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
@@ -141,15 +147,15 @@ function SearchLoading() {
       <main className="flex-1 max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
         <div className="animate-pulse space-y-8">
           {/* Search skeleton */}
-          <div className="h-14 bg-surface-low rounded-xl" />
+          <div className="h-14 bg-surface-container-low rounded-xl" />
           {/* Banner skeleton */}
-          <div className="h-48 bg-surface-low rounded-xl" />
+          <div className="h-48 bg-surface-container-low rounded-xl" />
           {/* Categories skeleton */}
           <div>
-            <div className="h-8 bg-surface-low rounded w-48 mb-4" />
+            <div className="h-8 bg-surface-container-low rounded w-48 mb-4" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="h-24 bg-surface-low rounded-xl" />
+                <div key={i} className="h-24 bg-surface-container-low rounded-xl" />
               ))}
             </div>
           </div>

@@ -12,7 +12,7 @@ interface SearchBarProps {
 }
 
 export function SearchBar({
-  placeholder = 'Search for restaurants, cuisines, or dishes...',
+  placeholder = 'Search dishes, restaurants, or cuisines',
   onSearch,
   onFilterClick,
   showFilter = true,
@@ -37,47 +37,48 @@ export function SearchBar({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative w-full group">
-      {/* Search Icon */}
-      <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-        <span className="material-symbols-outlined text-secondary group-focus-within:text-primary transition-colors">
+    <form onSubmit={handleSubmit} className="relative w-full">
+      <div className="relative w-full shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] rounded-xl group">
+        {/* Search Icon - Left side for RTL compatibility */}
+        <span 
+          className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors z-10"
+        >
           search
         </span>
+        
+        {/* Input */}
+        <input
+          type="text"
+          value={value}
+          onChange={handleChange}
+          placeholder={placeholder}
+          className="
+            w-full pl-12 pr-4 py-4 
+            rounded-xl 
+            border border-surface-variant 
+            bg-surface-container-lowest 
+            font-body-lg text-body-lg text-on-surface 
+            placeholder:text-secondary 
+            focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary 
+            transition-all relative z-0
+          "
+          dir="rtl"
+        />
+        
+        {/* Filter Button - Right side for RTL */}
+        {showFilter && (
+          <button
+            type="button"
+            onClick={onFilterClick}
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-surface-container p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+            aria-label="Filter"
+          >
+            <span className="material-symbols-outlined text-[20px]">
+              tune
+            </span>
+          </button>
+        )}
       </div>
-      
-      {/* Input */}
-      <input
-        type="text"
-        value={value}
-        onChange={handleChange}
-        placeholder={placeholder}
-        className="
-          w-full pr-12 pl-4 py-4 
-          bg-surface-container-lowest 
-          border border-surface-variant 
-          rounded-xl 
-          focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary 
-          text-base text-foreground 
-          placeholder:text-secondary 
-          transition-all 
-          shadow-search
-        "
-        dir="rtl"
-      />
-      
-      {/* Filter Button */}
-      {showFilter && (
-        <button
-          type="button"
-          onClick={onFilterClick}
-          className="absolute left-3 top-1/2 -translate-y-1/2 bg-surface-container p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
-          aria-label="Filter"
-        >
-          <span className="material-symbols-outlined text-[20px]" data-icon="tune">
-            tune
-          </span>
-        </button>
-      )}
     </form>
   );
 }

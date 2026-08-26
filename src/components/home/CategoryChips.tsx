@@ -35,7 +35,7 @@ export function CategoryChips({
           key={category.id}
           onClick={() => onSelect?.(category.id)}
           className={`
-            flex flex-col items-center justify-center gap-2 
+            flex flex-col items-center justify-center gap-sm 
             bg-surface-container-highest hover:bg-surface-variant 
             transition-colors rounded-xl px-lg py-md min-w-[100px] 
             active:scale-95 duration-150
@@ -48,7 +48,7 @@ export function CategoryChips({
           <span className="material-symbols-outlined text-primary text-[32px]">
             {category.icon}
           </span>
-          <span className="font-label-md text-on-surface whitespace-nowrap">
+          <span className="font-label-md text-label-md text-on-surface whitespace-nowrap">
             {category.name}
           </span>
         </button>

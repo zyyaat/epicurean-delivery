@@ -63,14 +63,14 @@ export default function HomePage() {
         onCartClick={() => router.push('/cart')}
       />
       
-      {/* Main Content */}
+      {/* Main Content - Matching Original Design Exactly */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-xl flex flex-col gap-xl pb-24 md:pb-xl">
         
         {/* Location & Search Section */}
         <section className="flex flex-col gap-md">
           {/* Location Selector */}
           <div 
-            className="flex items-center gap-sm text-secondary hover:text-foreground transition-colors cursor-pointer w-fit"
+            className="flex items-center gap-sm text-secondary hover:text-on-background transition-colors cursor-pointer w-fit"
             onClick={() => alert('Location picker would open here 📍')}
           >
             <span 
@@ -80,24 +80,25 @@ export default function HomePage() {
               location_on
             </span>
             <div className="flex flex-col">
-              <span className="font-label-md text-secondary uppercase text-[10px]">Delivering to</span>
-              <span className="text-base font-semibold text-foreground flex items-center gap-xs">
+              <span className="font-label-md text-label-md uppercase text-secondary">Delivering to</span>
+              <span className="font-title-lg text-title-lg text-on-background flex items-center gap-xs">
                 124 Main Street
-                <span className="material-symbols-outlined text-sm">expand_more</span>
+                <span className="material-symbols-outlined">expand_more</span>
               </span>
             </div>
           </div>
           
           {/* Search Bar */}
           <SearchBar 
+            placeholder="Search for restaurants, cuisines, or dishes..."
             onSearch={handleSearch}
             onFilterClick={() => router.push('/search')}
           />
         </section>
 
-        {/* Categories Section */}
+        {/* Categories Section - Matching Original Design */}
         <section className="flex flex-col gap-md">
-          <h2 className="text-headline-lg-mobile font-bold text-foreground text-[28px] leading-[36px]">
+          <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">
             Cravings
           </h2>
           <CategoryChips 
@@ -107,16 +108,16 @@ export default function HomePage() {
           />
         </section>
 
-        {/* Featured Restaurants Section */}
+        {/* Featured Restaurants Section - Matching Original Design */}
         <section className="flex flex-col gap-lg">
           {/* Section Header */}
           <div className="flex justify-between items-end">
-            <h2 className="text-headline-lg-mobile font-bold text-foreground text-[28px] leading-[36px]">
+            <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">
               Featured Spots
             </h2>
             <button 
               onClick={() => router.push('/search')}
-              className="text-primary hover:text-primary-container transition-colors uppercase tracking-wider flex items-center gap-xs text-xs font-semibold"
+              className="font-label-md text-label-md text-primary hover:text-primary-container transition-colors uppercase tracking-wider flex items-center gap-xs"
             >
               See All 
               <span className="material-symbols-outlined text-sm">arrow_forward</span>
@@ -135,30 +136,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Promo Banner Section */}
-        <section 
-          className="w-full rounded-xl overflow-hidden relative h-48 shadow-search isolate group cursor-pointer"
-          onClick={() => router.push('/search?category=bowls')}
-        >
-          <div 
-            className="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500 -z-10"
-            style={{
-              backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgTN6qls2werQbQTHRTDPhIokaEP_NCqEgeoP8eMLvLhfkqeagywr8O6cuwcc5HtrkUQ8mxZsIE4hVGAHdUir3011I4SoGviRIilsXBRoKDzg0cS3G50Vsb6BR2lWb2P4dq2gueOuscxRNMvHNGzmQrWq89Dd0YCYgO6mzfgvFHBd6q0lFcnqLBEWKxc8N8NL8wXf2oSIBWoMn0LDn2y9x-hyowYjM9reGlimuhmjue-EH_0oz7YKDIA')`
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-background/50 to-transparent -z-10" />
-          <div className="h-full flex flex-col justify-center p-lg w-2/3">
-            <span className="inline-block bg-primary text-on-primary font-label-md px-2 py-1 rounded-full w-max mb-sm uppercase tracking-wider text-[10px]">
-              Trending
-            </span>
-            <h2 className="text-2xl font-bold text-foreground mb-1">
-              Fresh Bowls
-            </h2>
-            <p className="text-sm text-secondary">
-              Discover vibrant, healthy options near you.
-            </p>
-          </div>
-        </section>
+        {/* Spacer for mobile nav */}
+        <div className="h-8 md:hidden"></div>
       </main>
 
       {/* Bottom Navigation */}

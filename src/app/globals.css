@@ -7,25 +7,52 @@
 @theme inline {
   /* Core Brand Colors */
   --color-background: #fbf9f9;
+  --color-on-background: #1b1c1c;
   --color-foreground: #1b1c1c;
   --color-primary: #b90027;
-  --color-primary-foreground: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #e31837;
+  --color-on-primary-container: #fffaf9;
+  --color-primary-fixed: #ffdad8;
+  --color-on-primary-fixed: #410007;
+  --color-primary-fixed-dim: #ffb3b1;
+  --color-on-primary-fixed-variant: #92001d;
+  --color-inverse-primary: #ffb3b1;
+  --color-surface-tint: #bf0029;
   --color-secondary: #5f5e5e;
-  --color-secondary-foreground: #ffffff;
-  --color-muted: #e9e8e7;
-  --color-muted-foreground: #5f5e5e;
-  --color-accent: #ffdad8;
-  --color-accent-foreground: #410007;
-  --color-destructive: #ba1a1a;
-  --color-destructive-foreground: #ffffff;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #e2dfde;
+  --color-on-secondary-container: #636262;
+  --color-secondary-fixed: #e5e2e1;
+  --color-on-secondary-fixed: #1c1b1b;
+  --color-secondary-fixed-dim: #c8c6c5;
+  --color-on-secondary-fixed-variant: #474746;
+  --color-tertiary: #5a5b5c;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #727474;
+  --color-on-tertiary-container: #fbfbfb;
+  --color-tertiary-fixed: #e2e2e2;
+  --color-on-tertiary-fixed: #1a1c1c;
+  --color-tertiary-fixed-dim: #c6c6c7;
+  --color-on-tertiary-fixed-variant: #454747;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-outline: #916e6d;
+  --color-outline-variant: #e6bdbb;
+  --color-inverse-surface: #303031;
+  --color-inverse-on-surface: #f2f0f0;
   
-  /* Surface Colors */
+  /* Surface Colors - Full MD3 Set */
   --color-surface: #fbf9f9;
-  --color-surface-lowest: #ffffff;
-  --color-surface-low: #f5f3f3;
+  --color-surface-dim: #dbdad9;
+  --color-surface-bright: #fbf9f9;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f5f3f3;
   --color-surface-container: #efeded;
-  --color-surface-high: #e9e8e7;
-  --color-surface-highest: #e3e2e2;
+  --color-surface-container-high: #e9e8e7;
+  --color-surface-container-highest: #e3e2e2;
   --color-surface-variant: #e3e2e2;
   
   /* Text Colors */
@@ -36,8 +63,6 @@
   --color-border: #e3e2e2;
   --color-input: #e3e2e2;
   --color-ring: #b90027;
-  --color-error: #ba1a1a;
-  --color-error-container: #ffdad6;
   
   /* Shadcn/ui compatibility */
   --color-card: var(--card);
@@ -233,7 +258,8 @@
     box-shadow: 0 -8px 30px 0 rgba(0,0,0,0.08);
   }
 
-  /* Typography utilities matching design system */
+  /* Typography utilities matching MD3 Design System */
+  .font-display-lg,
   .text-display-lg {
     font-family: 'Inter', sans-serif;
     font-size: 48px;
@@ -242,6 +268,7 @@
     font-weight: 800;
   }
   
+  .font-headline-lg-mobile,
   .text-headline-lg-mobile {
     font-family: 'Inter', sans-serif;
     font-size: 28px;
@@ -250,28 +277,49 @@
     font-weight: 700;
   }
   
-  .text-headline-md-custom {
+  .font-headline-lg,
+  .text-headline-lg {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+  }
+  
+  .font-headline-md,
+  .text-headline-md {
     font-family: 'Inter', sans-serif;
     font-size: 24px;
     line-height: 32px;
     font-weight: 700;
   }
   
-  .text-title-lg-custom {
+  .font-title-lg,
+  .text-title-lg {
     font-family: 'Inter', sans-serif;
     font-size: 20px;
     line-height: 28px;
     font-weight: 600;
   }
   
-  .text-body-md-custom {
+  .font-body-lg,
+  .text-body-lg {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  
+  .font-body-md,
+  .text-body-md {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
   }
   
-  .text-label-md-custom {
+  .font-label-md,
+  .text-label-md {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     line-height: 16px;
