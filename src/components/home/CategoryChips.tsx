@@ -5,7 +5,8 @@ import React from 'react';
 export interface Category {
   id: string;
   name: string;
-  image: string;
+  image?: string;
+  icon?: string;
   color?: string;
 }
 
@@ -55,6 +56,16 @@ const defaultCategories: Category[] = [
   },
 ];
 
+// Icon fallback mapping
+const iconMap: Record<string, string> = {
+  lunch_dining: '🍔',
+  local_pizza: '🍕',
+  set_meal: '🍣',
+  cake: '🍰',
+  ramen_dining: '🥡',
+  local_cafe: '☕',
+};
+
 export function CategoryChips({ 
   categories = defaultCategories, 
   activeCategory,
@@ -65,6 +76,7 @@ export function CategoryChips({
       {categories.map((category) => {
         const isActive = activeCategory === category.id;
         const categoryColor = category.color || '#d41b3c';
+        const hasImage = category.image && category.image.startsWith('/');
         
         return (
           <button
@@ -90,21 +102,48 @@ export function CategoryChips({
               />
             )}
             
-            {/* Image Container - Using background image for reliability */}
+            {/* Image/Icon Container */}
             <div 
               className={`
-                w-16 h-16 rounded-2xl overflow-hidden relative
-                transition-all duration-500 ease-out bg-cover bg-center
+                w-16 h-16 rounded-2xl overflow-hidden relative flex items-center justify-center
+                transition-all duration-500 ease-out
                 ${isActive ? 'shadow-glow scale-105 ring-2 ring-offset-2' : 'shadow-md group-hover:scale-105 group-hover:shadow-lg'}
               `}
               style={{ 
-                backgroundImage: `url('${category.image}')`,
                 ringColor: isActive ? categoryColor : 'transparent',
                 boxShadow: isActive 
                   ? `0 8px 24px ${categoryColor}40` 
-                  : '0 4px 12px rgba(0,0,0,0.1)'
+                  : '0 4px 12px rgba(0,0,0,0.1)',
+                backgroundColor: `${categoryColor}15`
               }}
-            />
+            >
+              {hasImage ? (
+                // Use img tag for maximum compatibility
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  onError={(e) => {
+                    // Fallback to emoji if image fails
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      const emoji = document.createElement('span');
+                      emoji.className = 'text-3xl';
+                      emoji.textContent = iconMap[category.icon || ''] || '🍽️';
+                      parent.appendChild(emoji);
+                    }
+                  }}
+                />
+              ) : (
+                // Emoji fallback
+                <span className="text-3xl">
+                  {iconMap[category.icon || ''] || '🍽️'}
+                </span>
+              )}
+            </div>
             
             {/* Label */}
             <span className={`
