@@ -71,18 +71,24 @@ const statusConfig: Record<OrderStatus, { label: string; color: string; icon: st
 
 export default function OrdersPage() {
   const router = useRouter();
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, isLoading: authLoading } = useAuthStore();
   const addItem = useCartStore((state) => state.addItem);
   
   const [selectedOrder, setSelectedOrder] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<'all' | OrderStatus>('all');
+  const [mounted, setMounted] = useState(false);
 
-  // Redirect if not authenticated
+  // Handle hydration - wait for client mount
   React.useEffect(() => {
-    if (!isAuthenticated) {
+    setMounted(true);
+  }, []);
+
+  // Redirect if not authenticated (only on client)
+  React.useEffect(() => {
+    if (mounted && !isAuthenticated && !authLoading) {
       router.push('/login');
     }
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated, authLoading, mounted, router]);
 
   const handleReorder = (orderId: string) => {
     const order = mockOrders.find(o => o.id === orderId);
@@ -117,12 +123,16 @@ export default function OrdersPage() {
     ? mockOrders 
     : mockOrders.filter(o => o.status === activeFilter);
 
-  if (!isAuthenticated) {
+  if (!mounted || authLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <span className="material-symbols-outlined animate-spin text-primary text-4xl">progress_activity</span>
       </div>
     );
+  }
+
+  if (!isAuthenticated) {
+    return null; // Will redirect via useEffect
   }
 
   return (
