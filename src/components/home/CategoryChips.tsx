@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+// Using standard img tag for better compatibility
+// import Image from 'next/image';
 
 export interface Category {
   id: string;
@@ -105,14 +106,12 @@ export function CategoryChips({
                   : '0 4px 12px rgba(0,0,0,0.1)'
               }}
             >
-              <Image
+              <img
                 src={category.image}
                 alt={category.name}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-                sizes="64px"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 loading="eager"
-                priority={categories.indexOf(category) < 3}
+                decoding="async"
               />
               
               {/* Subtle gradient overlay for depth */}
