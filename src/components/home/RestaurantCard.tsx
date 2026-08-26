@@ -28,7 +28,7 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
       className="
         card-modern overflow-hidden 
         group cursor-pointer flex flex-col
-        hover-lift
+        hover-lift my-2
       "
     >
       {/* Image Container with gradient overlay */}
@@ -90,8 +90,8 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
         </div>
       </div>
       
-      {/* Content - Modern spacing and typography */}
-      <div className="p-6 flex flex-col gap-3.5 flex-grow">
+      {/* Content - Extra generous spacing */}
+      <div className="p-7 md:p-8 flex flex-col gap-4 flex-grow">
         {/* Header Row */}
         <div className="flex justify-between items-start gap-3">
           <h3 className="font-title-lg text-title-lg text-on-background line-clamp-1 group-hover:text-primary transition-colors">

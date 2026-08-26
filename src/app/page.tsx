@@ -128,8 +128,8 @@ export default function HomePage() {
             </button>
           </div>
           
-          {/* Restaurant Grid - Generous spacing for breathing room */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {/* Restaurant Grid - Extra generous spacing */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
             {featuredRestaurants.map((restaurant) => (
               <RestaurantCard
                 key={restaurant.id}
