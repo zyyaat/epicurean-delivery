@@ -21,37 +21,37 @@ const defaultCategories: Category[] = [
   { 
     id: 'burgers', 
     name: 'Burgers',
-    image: '/categories/burgers.png',
+    image: '/categories/burgers.jpg',
     color: '#ff6b35'
   },
   { 
     id: 'pizza', 
     name: 'Pizza',
-    image: '/categories/pizza.png',
+    image: '/categories/pizza.jpg',
     color: '#d41b3c'
   },
   { 
     id: 'sushi', 
     name: 'Sushi',
-    image: '/categories/sushi.png',
+    image: '/categories/sushi.jpg',
     color: '#f59e0b'
   },
   { 
     id: 'dessert', 
     name: 'Dessert',
-    image: '/categories/dessert.png',
+    image: '/categories/dessert.jpg',
     color: '#ec4899'
   },
   { 
     id: 'asian', 
     name: 'Asian',
-    image: '/categories/asian.png',
+    image: '/categories/asian.jpg',
     color: '#8b5cf6'
   },
   { 
     id: 'cafe', 
     name: 'Cafe',
-    image: '/categories/cafe.png',
+    image: '/categories/cafe.jpg',
     color: '#10b981'
   },
 ];
