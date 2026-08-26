@@ -731,3 +731,28 @@
   background: rgba(212, 27, 60, 0.15);
   color: #1a1a1a;
 }
+
+/* ============================================
+   RTL-SAFE TEXT TRUNCATION
+   For English text in RTL layouts
+   Truncates from END not START
+   ============================================ */
+.truncate-ltr {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  direction: ltr !important;
+  text-align: left;
+  unicode-bidi: isolate;
+  display: block;
+}
+
+.truncate-ltr-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  direction: ltr !important;
+  text-align: left;
+  unicode-bidi: isolate;
+}

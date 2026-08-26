@@ -170,16 +170,16 @@ export default function CartPage() {
                 {/* Header Row: Name + Price */}
                 <div className="flex justify-between items-start gap-3 mb-2">
                   {/* Name & Description - Gets priority space */}
-                  <div className="flex-1 min-w-0" style={{ direction: 'ltr' }}>
+                  <div className="flex-1 min-w-0">
                     <h3 
                       className="font-title-lg text-title-lg text-on-background font-semibold 
-                        truncate"
+                        truncate-ltr"
                       title={item.name}
                     >
                       {item.name}
                     </h3>
                     <p 
-                      className="font-body-md text-body-md text-secondary mt-0.5 truncate"
+                      className="font-body-md text-body-md text-secondary mt-0.5 truncate-ltr"
                       title={item.description}
                     >
                       {item.description}
