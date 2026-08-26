@@ -158,10 +158,10 @@ function SearchContent() {
         onCartClick={() => router.push('/cart')}
       />
       
-      {/* Main Content */}
-      <main className="flex-1 w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-xl pb-24 md:pb-xl flex flex-col gap-xl">
+      {/* Main Content - Extra top padding for breathing room */}
+      <main className="flex-1 w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop pt-8 md:pt-12 pb-24 md:pb-xl flex flex-col gap-8 md:gap-10">
         {/* Search Section */}
-        <section className="w-full relative">
+        <section className="w-full relative mt-4 md:mt-6">
           <SearchBar 
             value={searchQuery}
             onSearch={handleSearch}
@@ -291,7 +291,7 @@ function SearchContent() {
 
         {/* Featured Promo Banner - Dark Frosted Glass Design */}
         <section 
-          className="w-full rounded-2xl overflow-hidden relative h-64 md:h-72 shadow-[0_8px_30px_0_rgba(0,0,0,0.3)] isolate group cursor-pointer mb-8 md:mb-10"
+          className="w-full rounded-2xl overflow-hidden relative h-72 md:h-80 shadow-[0_8px_30px_0_rgba(0,0,0,0.3)] isolate group cursor-pointer mb-10 md:mb-12"
           onClick={() => router.push('/search?category=trending')}
         >
           {/* Background Image - Full Coverage */}
