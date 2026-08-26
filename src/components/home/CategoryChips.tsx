@@ -1,12 +1,14 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 export interface Category {
   id: string;
   name: string;
-  icon: string;
-  color?: string; // Optional gradient color
+  image: string; // Professional image URL
+  icon?: string; // Fallback icon (optional)
+  color?: string; // Accent color
 }
 
 interface CategoryChipsProps {
@@ -15,13 +17,44 @@ interface CategoryChipsProps {
   onSelect?: (id: string) => void;
 }
 
+// Professional food photography images (like Talabat/Deliveroo)
 const defaultCategories: Category[] = [
-  { id: 'burgers', name: 'Burgers', icon: 'lunch_dining', color: '#ff6b35' },
-  { id: 'pizza', name: 'Pizza', icon: 'local_pizza', color: '#d41b3c' },
-  { id: 'sushi', name: 'Sushi', icon: 'set_meal', color: '#f59e0b' },
-  { id: 'dessert', name: 'Dessert', icon: 'cake', color: '#ec4899' },
-  { id: 'asian', name: 'Asian', icon: 'ramen_dining', color: '#8b5cf6' },
-  { id: 'cafe', name: 'Cafe', icon: 'local_cafe', color: '#10b981' },
+  { 
+    id: 'burgers', 
+    name: 'Burgers',
+    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/f93f6c0e43fe.jpg',
+    color: '#ff6b35'
+  },
+  { 
+    id: 'pizza', 
+    name: 'Pizza',
+    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/358a85647974.jpeg',
+    color: '#d41b3c'
+  },
+  { 
+    id: 'sushi', 
+    name: 'Sushi',
+    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/d58b691c1c9b.jpg',
+    color: '#f59e0b'
+  },
+  { 
+    id: 'dessert', 
+    name: 'Dessert',
+    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/7213c2e11ac8.jpg',
+    color: '#ec4899'
+  },
+  { 
+    id: 'asian', 
+    name: 'Asian',
+    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/8fa7c2e5ec65.jpg',
+    color: '#8b5cf6'
+  },
+  { 
+    id: 'cafe', 
+    name: 'Cafe',
+    image: 'https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/5e8a9ff61344.jpg',
+    color: '#10b981'
+  },
 ];
 
 export function CategoryChips({ 
@@ -30,7 +63,7 @@ export function CategoryChips({
   onSelect 
 }: CategoryChipsProps) {
   return (
-    <div className="flex gap-4 overflow-x-auto no-scrollbar pb-3 pt-2 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+    <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4 pt-2 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
       {categories.map((category) => {
         const isActive = activeCategory === category.id;
         const categoryColor = category.color || '#d41b3c';
@@ -43,9 +76,9 @@ export function CategoryChips({
               flex flex-col items-center justify-center gap-2.5
               bg-surface-container-lowest hover:bg-surface-container-low
               transition-all duration-300 ease-out
-              rounded-[20px] px-5 py-4 min-w-[100px]
+              rounded-2xl px-4 py-3 min-w-[90px]
               press-effect relative overflow-hidden
-              border-2 ${isActive ? 'border-primary/30 shadow-glow' : 'border-transparent shadow-modern'}
+              border-2 ${isActive ? 'border-primary/40 shadow-glow' : 'border-transparent shadow-modern'}
               group
             `}
             aria-label={category.name}
@@ -54,39 +87,42 @@ export function CategoryChips({
             {/* Background glow effect when active */}
             {isActive && (
               <span 
-                className="absolute inset-0 opacity-10 animate-fade-in"
+                className="absolute inset-0 opacity-[0.08] animate-fade-in"
                 style={{ background: `linear-gradient(135deg, ${categoryColor} 0%, ${categoryColor}99 100%)` }}
               />
             )}
             
-            {/* Icon Circle - Modern gradient background */}
-            <span 
+            {/* Image Container - Circular with shadow */}
+            <div 
               className={`
-                w-14 h-14 rounded-2xl flex items-center justify-center
+                w-16 h-16 rounded-2xl overflow-hidden relative
                 transition-all duration-500 ease-out
-                ${isActive ? 'shadow-glow scale-110' : 'group-hover:scale-105'}
+                ${isActive ? 'shadow-glow scale-105 ring-2 ring-offset-2' : 'shadow-md group-hover:scale-105 group-hover:shadow-lg'}
               `}
               style={{ 
-                background: isActive 
-                  ? `linear-gradient(135deg, ${categoryColor} 0%, ${categoryColor}cc 100%)`
-                  : `linear-gradient(135deg, ${categoryColor}20 0%, ${categoryColor}10 100%)`
+                ringColor: isActive ? categoryColor : 'transparent',
+                boxShadow: isActive 
+                  ? `0 8px 24px ${categoryColor}40` 
+                  : '0 4px 12px rgba(0,0,0,0.1)'
               }}
             >
-              <span 
-                className="material-symbols-outlined text-[28px] transition-colors"
-                style={{ 
-                  color: isActive ? '#ffffff' : categoryColor,
-                  fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0"
-                }}
-              >
-                {category.icon}
-              </span>
-            </span>
+              <Image
+                src={category.image}
+                alt={category.name}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                sizes="64px"
+                loading="lazy"
+              />
+              
+              {/* Subtle gradient overlay for text readability if needed */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
+            </div>
             
             {/* Label */}
             <span className={`
-              font-label-md text-label-md whitespace-nowrap transition-all duration-300
-              ${isActive ? 'text-on-background font-bold' : 'text-secondary'}
+              font-label-md text-[11px] whitespace-nowrap transition-all duration-300
+              ${isActive ? 'text-on-background font-bold' : 'text-secondary font-medium'}
             `}>
               {category.name}
             </span>
@@ -94,7 +130,7 @@ export function CategoryChips({
             {/* Active indicator dot */}
             {isActive && (
               <span 
-                className="absolute bottom-2 w-1.5 h-1.5 rounded-full animate-scale-in"
+                className="absolute bottom-1.5 w-1.5 h-1.5 rounded-full animate-scale-in"
                 style={{ backgroundColor: categoryColor }}
               />
             )}
