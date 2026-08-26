@@ -8,6 +8,7 @@ import { SearchBar } from '@/components/search/SearchBar';
 import { CategoryChips } from '@/components/home/CategoryChips';
 import { RestaurantCard } from '@/components/home/RestaurantCard';
 import { useCartStore } from '@/lib/store/cart-store';
+import { toast } from 'sonner';
 import { 
   featuredRestaurants, 
   categories,
@@ -70,8 +71,17 @@ export default function HomePage() {
         <section className="flex flex-col gap-md">
           {/* Location Selector */}
           <div 
-            className="flex items-center gap-sm text-secondary hover:text-on-background transition-colors cursor-pointer w-fit"
-            onClick={() => alert('Location picker would open here 📍')}
+            className="flex items-center gap-sm text-secondary hover:text-on-background transition-colors cursor-pointer w-fit press-effect"
+            onClick={() => toast.info('Location picker coming soon! 📍', {
+              duration: 2000,
+              position: 'bottom-center',
+              style: {
+                background: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)',
+                color: '#ffffff',
+                borderRadius: '14px',
+                fontFamily: 'Inter, sans-serif',
+              },
+            })}
           >
             <span 
               className="material-symbols-outlined text-primary"

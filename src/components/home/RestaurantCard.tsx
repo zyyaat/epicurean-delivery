@@ -26,67 +26,99 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
     <article
       onClick={() => onClick?.(restaurant.id)}
       className="
-        bg-surface-container-lowest rounded-xl overflow-hidden 
-        shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] 
-        hover:shadow-[0_8px_30px_0_rgba(0,0,0,0.08)] transition-shadow duration-300 
+        card-modern overflow-hidden 
         group cursor-pointer flex flex-col
+        hover-lift
       "
     >
-      {/* Image Container */}
-      <div className="relative w-full aspect-video overflow-hidden">
+      {/* Image Container with gradient overlay */}
+      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-t-[20px]">
         <img
           src={restaurant.image}
           alt={restaurant.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
           loading="lazy"
         />
         
-        {/* Rating Badge - Top Right for RTL */}
-        <div className="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
+        {/* Gradient overlay for depth */}
+        <div className="
+          absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent
+          opacity-0 group-hover:opacity-100 transition-opacity duration-500
+        " />
+
+        {/* Rating Badge - Modern glass style */}
+        <div className="absolute top-3 right-3 glass-strong px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-modern">
           <span 
-            className="material-symbols-outlined text-primary text-sm"
+            className="material-symbols-outlined text-[18px] text-warning"
             style={{ fontVariationSettings: "'FILL' 1" }}
           >
             star
           </span>
-          <span className="font-label-md text-label-md text-on-surface">{restaurant.rating.toFixed(1)}</span>
+          <span className="font-label-md text-label-md text-on-background font-bold">
+            {restaurant.rating.toFixed(1)}
+          </span>
         </div>
         
-        {/* Free Delivery Badge - Top Left for RTL */}
+        {/* Free Delivery Badge - Gradient style */}
         {restaurant.hasFreeDelivery && (
-          <div className="absolute top-4 left-4 bg-primary text-on-primary font-label-md text-label-md px-2 py-1 rounded-full shadow-sm">
-            Free Delivery
+          <div className="
+            absolute top-3 left-3 
+            gradient-primary text-white 
+            font-label-md text-label-md font-semibold
+            px-3 py-1.5 rounded-full 
+            shadow-glow flex items-center gap-1
+          ">
+            <span className="material-symbols-outlined text-[16px]">local_shipping</span>
+            Free
           </div>
         )}
+
+        {/* Quick action buttons on hover */}
+        <div className="
+          absolute bottom-3 left-3 right-3
+          flex justify-center gap-2
+          opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0
+          transition-all duration-300 ease-out
+        ">
+          <button className="
+            glass-strong w-10 h-10 rounded-full 
+            flex items-center justify-center
+            hover-glow press-effect
+          ">
+            <span className="material-symbols-outlined text-[20px] text-on-background">favorite</span>
+          </button>
+        </div>
       </div>
       
-      {/* Content - Matching Original Design */}
-      <div className="p-4 flex flex-col gap-sm flex-grow">
+      {/* Content - Modern spacing and typography */}
+      <div className="p-5 flex flex-col gap-3 flex-grow">
         {/* Header Row */}
-        <div className="flex justify-between items-start gap-2">
-          <h3 className="font-title-lg text-title-lg text-on-background line-clamp-1">
+        <div className="flex justify-between items-start gap-3">
+          <h3 className="font-title-lg text-title-lg text-on-background line-clamp-1 group-hover:text-primary transition-colors">
             {restaurant.name}
           </h3>
-          <span className="bg-surface-container-high text-on-surface font-label-md text-label-md px-2 py-1 rounded-md whitespace-nowrap">
+          <span className="
+            badge-modern badge-success whitespace-nowrap
+          ">
+            <span className="material-symbols-outlined text-[14px]">schedule</span>
             {restaurant.deliveryTime}
           </span>
         </div>
         
-        {/* Cuisine & Tags */}
+        {/* Cuisine & Tags - Subtle styling */}
         <p className="font-body-md text-body-md text-secondary line-clamp-1">
           {restaurant.cuisine} • {restaurant.tags.join(' • ')}
         </p>
         
-        {/* Footer Info - Matching Original Design Exactly */}
-        <div className="mt-auto pt-sm flex items-center gap-sm text-secondary font-body-md text-body-md">
-          <span className="flex items-center gap-xs">
-            <span className="material-symbols-outlined text-[16px]">delivery_dining</span>
-            {restaurant.deliveryFee === 0 ? '$0.00' : `$${restaurant.deliveryFee.toFixed(2)}`}
+        {/* Footer Info - Modern icon styling */}
+        <div className="mt-auto pt-3 border-t border-surface-container flex items-center gap-4 text-secondary font-body-md text-body-md">
+          <span className="flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-[18px] text-primary/70">delivery_dining</span>
+            <span className="font-medium">{restaurant.deliveryFee === 0 ? 'Free' : `$${restaurant.deliveryFee.toFixed(2)}`}</span>
           </span>
-          <span>•</span>
-          <span className="flex items-center gap-xs">
-            <span className="material-symbols-outlined text-[16px]">shopping_bag</span>
-            ${restaurant.minOrder} Min
+          <span className="flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-[18px] text-primary/70">shopping_bag</span>
+            <span className="font-medium">${restaurant.minOrder}</span> min
           </span>
         </div>
       </div>
