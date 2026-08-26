@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuthStore } from '@/lib/store/auth-store';
@@ -71,24 +71,26 @@ const statusConfig: Record<OrderStatus, { label: string; color: string; icon: st
 
 export default function OrdersPage() {
   const router = useRouter();
-  const { isAuthenticated, isLoading: authLoading } = useAuthStore();
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const addItem = useCartStore((state) => state.addItem);
   
   const [selectedOrder, setSelectedOrder] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<'all' | OrderStatus>('all');
   const [mounted, setMounted] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   // Handle hydration - wait for client mount
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Redirect if not authenticated (only on client)
-  React.useEffect(() => {
-    if (mounted && !isAuthenticated && !authLoading) {
+  // Check auth after mount
+  useEffect(() => {
+    if (mounted && !isAuthenticated) {
+      setShouldRedirect(true);
       router.push('/login');
     }
-  }, [isAuthenticated, authLoading, mounted, router]);
+  }, [mounted, isAuthenticated, router]);
 
   const handleReorder = (orderId: string) => {
     const order = mockOrders.find(o => o.id === orderId);
@@ -123,16 +125,9 @@ export default function OrdersPage() {
     ? mockOrders 
     : mockOrders.filter(o => o.status === activeFilter);
 
-  if (!mounted || authLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <span className="material-symbols-outlined animate-spin text-primary text-4xl">progress_activity</span>
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return null; // Will redirect via useEffect
+  // Show nothing while redirecting
+  if (!mounted || shouldRedirect) {
+    return null;
   }
 
   return (
