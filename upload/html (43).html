@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search &amp; Categories - Epicurean</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#ffdad8",
+                    "surface-tint": "#bf0029",
+                    "surface-container": "#efeded",
+                    "tertiary-container": "#727474",
+                    "primary-container": "#e31837",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e3e2e2",
+                    "on-background": "#1b1c1c",
+                    "background": "#fbf9f9",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#dbdad9",
+                    "primary": "#b90027",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e3e2e2",
+                    "tertiary": "#5a5b5c",
+                    "on-primary-fixed": "#410007",
+                    "surface-container-low": "#f5f3f3",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "inverse-primary": "#ffb3b1",
+                    "secondary-container": "#e2dfde",
+                    "inverse-surface": "#303031",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "surface-container-high": "#e9e8e7",
+                    "on-tertiary-container": "#fbfbfb",
+                    "on-primary-container": "#fffaf9",
+                    "on-primary-fixed-variant": "#92001d",
+                    "on-surface": "#1b1c1c",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#fbf9f9",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#e6bdbb",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "outline": "#916e6d",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-surface-variant": "#5d3f3e",
+                    "surface-bright": "#fbf9f9",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-secondary-fixed-variant": "#474746",
+                    "secondary": "#5f5e5e",
+                    "inverse-on-surface": "#f2f0f0",
+                    "primary-fixed-dim": "#ffb3b1",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-secondary-container": "#636262",
+                    "on-secondary-fixed": "#1c1b1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "title-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen antialiased flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface text-primary font-title-lg text-title-lg w-full sticky top-0 shadow-sm flex justify-between items-center px-margin-mobile h-16 z-50">
+<button aria-label="Menu" class="text-secondary hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg text-display-lg font-black text-primary truncate mx-4">Epicurean</h1>
+<button aria-label="Cart" class="text-secondary hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-xl pb-24 md:pb-xl flex flex-col gap-xl">
+<!-- Search Section -->
+<section class="w-full relative">
+<div class="relative w-full shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] rounded-xl group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-primary transition-colors z-10" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl border border-surface-variant bg-surface-container-lowest font-body-lg text-body-lg text-on-surface placeholder:text-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all relative z-0" placeholder="Search dishes, restaurants, or cuisines" type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 bg-surface-container p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+</button>
+</div>
+</section>
+<!-- Featured Promo (Tactile highlight) -->
+<section class="w-full rounded-xl overflow-hidden relative h-48 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] isolate group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500 -z-10" data-alt="A striking, high-contrast overhead food photography shot of a vibrant poke bowl. The bowl is filled with fresh, glistening salmon, bright green edamame, and perfectly sliced avocado. The lighting is crisp and modern, casting soft shadows that elevate the tactile feel of the ingredients. The setting is clean and minimalist, fitting a premium food delivery app in light mode, with subtle energetic red undertones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgTN6qls2werQbQTHRTDPhIokaEP_NCqEgeoP8eMLvLhfkqeagywr8O6cuwcc5HtrkUQ8mxZsIE4hVGAHdUir3011I4SoGviRIilsXBRoKDzg0cS3G50Vsb6BR2lWb2P4dq2gueOuscxRNMvHNGzmQrWq89Dd0YCYgO6mzfgvFHBd6q0lFcnqLBEWKxc8N8NL8wXf2oSIBWoMn0LDn2y9x-hyowYjM9reGlimuhmjue-EH_0oz7YKDIA')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent -z-10"></div>
+<div class="h-full flex flex-col justify-center p-lg w-2/3">
+<span class="inline-block bg-primary text-on-primary font-label-md text-label-md px-2 py-1 rounded-full w-max mb-sm uppercase tracking-wider">Trending</span>
+<h2 class="font-headline-md text-headline-md text-on-background mb-xs">Fresh Bowls</h2>
+<p class="font-body-md text-body-md text-secondary">Discover vibrant, healthy options near you.</p>
+</div>
+</section>
+<!-- Categories Bento Grid -->
+<section class="w-full flex flex-col gap-md">
+<h2 class="font-headline-md text-headline-md text-on-background">Explore Categories</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<!-- Category Card: Halal -->
+<button class="bg-surface-container-lowest rounded-xl p-md flex flex-col items-center justify-center gap-sm shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] hover:bg-surface-container-low active:scale-95 transition-all group border border-transparent hover:border-surface-variant">
+<div class="w-12 h-12 rounded-full bg-error-container text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="kebab_dining">kebab_dining</span>
+</div>
+<span class="font-title-lg text-title-lg text-on-background">Halal</span>
+</button>
+<!-- Category Card: Asian -->
+<button class="bg-surface-container-lowest rounded-xl p-md flex flex-col items-center justify-center gap-sm shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] hover:bg-surface-container-low active:scale-95 transition-all group border border-transparent hover:border-surface-variant">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="ramen_dining">ramen_dining</span>
+</div>
+<span class="font-title-lg text-title-lg text-on-background">Asian</span>
+</button>
+<!-- Category Card: Healthy -->
+<button class="bg-surface-container-lowest rounded-xl p-md flex flex-col items-center justify-center gap-sm shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] hover:bg-surface-container-low active:scale-95 transition-all group border border-transparent hover:border-surface-variant">
+<div class="w-12 h-12 rounded-full bg-surface-container-high text-tertiary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+<span class="font-title-lg text-title-lg text-on-background">Healthy</span>
+</button>
+<!-- Category Card: Fast Food -->
+<button class="bg-surface-container-lowest rounded-xl p-md flex flex-col items-center justify-center gap-sm shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] hover:bg-surface-container-low active:scale-95 transition-all group border border-transparent hover:border-surface-variant">
+<div class="w-12 h-12 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="fastfood">fastfood</span>
+</div>
+<span class="font-title-lg text-title-lg text-on-background">Fast Food</span>
+</button>
+<!-- Category Card: Desserts -->
+<button class="bg-surface-container-lowest rounded-xl p-md flex flex-col items-center justify-center gap-sm shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] hover:bg-surface-container-low active:scale-95 transition-all group border border-transparent hover:border-surface-variant">
+<div class="w-12 h-12 rounded-full bg-error-container text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="icecream">icecream</span>
+</div>
+<span class="font-title-lg text-title-lg text-on-background">Desserts</span>
+</button>
+<!-- Category Card: Drinks -->
+<button class="bg-surface-container-lowest rounded-xl p-md flex flex-col items-center justify-center gap-sm shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] hover:bg-surface-container-low active:scale-95 transition-all group border border-transparent hover:border-surface-variant">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="local_cafe">local_cafe</span>
+</div>
+<span class="font-title-lg text-title-lg text-on-background">Drinks</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-4 bg-surface/80 backdrop-blur-md rounded-t-xl shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)] md:hidden">
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all active:scale-90 p-2 rounded-xl">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-background hover:bg-surface-container-low transition-all active:scale-90 p-2 rounded-xl">
+<span class="material-symbols-outlined mb-1 text-[24px] text-primary" data-icon="search" data-weight="fill" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-md text-label-md text-primary">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all active:scale-90 p-2 rounded-xl">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all active:scale-90 p-2 rounded-xl">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Account</span>
+</button>
+</nav>
+</body></html>

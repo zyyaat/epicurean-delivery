@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cart Preview - Epicurean</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#ffdad8",
+                        "surface-tint": "#bf0029",
+                        "surface-container": "#efeded",
+                        "tertiary-container": "#727474",
+                        "primary-container": "#e31837",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e3e2e2",
+                        "on-background": "#1b1c1c",
+                        "background": "#fbf9f9",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dbdad9",
+                        "primary": "#b90027",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e3e2e2",
+                        "tertiary": "#5a5b5c",
+                        "on-primary-fixed": "#410007",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-primary": "#ffb3b1",
+                        "secondary-container": "#e2dfde",
+                        "inverse-surface": "#303031",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-container-high": "#e9e8e7",
+                        "on-tertiary-container": "#fbfbfb",
+                        "on-primary-container": "#fffaf9",
+                        "on-primary-fixed-variant": "#92001d",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fbf9f9",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#e6bdbb",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "outline": "#916e6d",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-surface-variant": "#5d3f3e",
+                        "surface-bright": "#fbf9f9",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#474746",
+                        "secondary": "#5f5e5e",
+                        "inverse-on-surface": "#f2f0f0",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-secondary-container": "#636262",
+                        "on-secondary-fixed": "#1c1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Hide scrollbar for clean minimal look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg antialiased">
+<!-- TopAppBar from JSON -->
+<header class="bg-surface w-full sticky top-0 bg-surface flex justify-between items-center px-margin-mobile h-16 w-full z-50 shadow-sm">
+<button class="text-primary hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg text-display-lg font-black text-primary" style="font-size: 24px; line-height: 1.2;">Epicurean</h1>
+<button class="text-primary font-bold hover:bg-surface-container-high transition-colors active:scale-95 transition-transform duration-150 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="shopping_cart" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="w-full max-w-3xl mx-auto px-margin-mobile pt-lg pb-32 flex flex-col gap-xl relative">
+<!-- Page Title -->
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">Your Order</h2>
+<p class="font-body-md text-body-md text-secondary mt-1">Review items before checkout</p>
+</div>
+<!-- Cart Items List -->
+<section class="flex flex-col gap-md">
+<!-- Item 1 -->
+<article class="flex gap-md bg-surface p-sm rounded-xl shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] border border-surface-variant">
+<div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden relative bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A top-down view of a gourmet wagyu beef burger on a toasted brioche bun, featuring perfectly melted artisan cheese, crisp fresh lettuce, and a glossy, rich sauce. The lighting is bright and appetizing, creating a high-energy epicurean aesthetic against a clean, minimalist background, emphasizing the premium quality of the ingredients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA136ow7Jmia34BeGN8-5MwCxwZUoQWT4ppwvzXhwTXl_Ds8uoW3vxqH3OnfQRtgzVMmblZYOu_XtqPmTPaqpdl9Je7qfDh_NdjKBW7K_9Xmmpcel0yrEE2OihLxpKIbQfJom_h4gsBu4ImXlkN-2kTWOgAXSjDS4tSX4q_TZim3tJnxwzE3j-pxTa66i9mBWwTS4cZZ3AwBVGowenKzl2sMoWyFa3-HdS6NjmQH0IEwIQHHIKxfLX9NA"/>
+</div>
+<div class="flex flex-col justify-between flex-grow py-1">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="font-title-lg text-title-lg text-on-background line-clamp-1 text-base">Signature Wagyu Burger</h3>
+<p class="font-body-md text-body-md text-secondary line-clamp-1 text-xs mt-0.5">Medium Rare, No Onions</p>
+</div>
+<span class="font-title-lg text-title-lg text-on-background text-base shrink-0">$24.00</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<button class="text-secondary hover:text-error transition-colors text-xs font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
+                            Remove
+                        </button>
+<!-- Quantity Control -->
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 gap-3 border border-surface-variant">
+<button class="text-on-surface hover:text-primary transition-colors flex items-center justify-center w-6 h-6 rounded-full active:scale-90">
+<span class="material-symbols-outlined" style="font-size: 18px;">remove</span>
+</button>
+<span class="font-title-lg text-title-lg text-sm w-4 text-center">1</span>
+<button class="text-on-surface hover:text-primary transition-colors flex items-center justify-center w-6 h-6 rounded-full active:scale-90">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Item 2 -->
+<article class="flex gap-md bg-surface p-sm rounded-xl shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] border border-surface-variant">
+<div class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden relative bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A sleek, modern glass filled with a vibrant, sparkling ruby-red craft cocktail, garnished with a delicate twist of citrus peel and a sprig of fresh mint. Condensation glistens on the glass under crisp, high-key studio lighting, conveying a refreshing and premium dining experience in a minimalist setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh82cFkEFhOyyczv365CNHxG3eT6HZ0HzGRdpgktgXJpA_zF0PcH9djFXGVKuiSA49s5tgKhq6HnUsStdcMrqUdPXP7r2oESVlYMJe1HBRgvQOBcj0ORutk7FN083kkMCGoOWZT3KbMUJKg8qgJVnQLfmD_u6JPVk1A9Xx8i9DasviCDO0yI_r6gsD3vtULRDLJPj2eRD_ChF87I47zfe0VY0TZoSkVsicUjBscwp2PLC9eMN3Ngb9TQ"/>
+</div>
+<div class="flex flex-col justify-between flex-grow py-1">
+<div class="flex justify-between items-start gap-2">
+<div>
+<h3 class="font-title-lg text-title-lg text-on-background line-clamp-1 text-base">Crimson Spritz</h3>
+<p class="font-body-md text-body-md text-secondary line-clamp-1 text-xs mt-0.5">House Special Cocktail</p>
+</div>
+<span class="font-title-lg text-title-lg text-on-background text-base shrink-0">$14.50</span>
+</div>
+<div class="flex justify-between items-center mt-2">
+<button class="text-secondary hover:text-error transition-colors text-xs font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
+                            Remove
+                        </button>
+<!-- Quantity Control -->
+<div class="flex items-center bg-surface-container-low rounded-full px-2 py-1 gap-3 border border-surface-variant">
+<button class="text-on-surface hover:text-primary transition-colors flex items-center justify-center w-6 h-6 rounded-full active:scale-90">
+<span class="material-symbols-outlined" style="font-size: 18px;">remove</span>
+</button>
+<span class="font-title-lg text-title-lg text-sm w-4 text-center">2</span>
+<button class="text-on-surface hover:text-primary transition-colors flex items-center justify-center w-6 h-6 rounded-full active:scale-90">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Promotions Section -->
+<section class="bg-surface rounded-xl p-lg shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] border border-surface-variant">
+<h3 class="font-title-lg text-title-lg text-on-background mb-4 text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">local_offer</span>
+                Promotions
+            </h3>
+<div class="flex gap-2">
+<input class="flex-grow bg-background border border-surface-variant rounded-lg px-4 py-3 font-body-md text-on-background placeholder:text-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Enter promo code" type="text"/>
+<button class="bg-surface-container-high text-on-surface font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-surface-variant transition-colors whitespace-nowrap active:scale-95">
+                    Apply
+                </button>
+</div>
+</section>
+<!-- Order Summary -->
+<section class="bg-surface rounded-xl p-lg shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] border border-surface-variant">
+<h3 class="font-title-lg text-title-lg text-on-background mb-4 text-lg">Order Summary</h3>
+<div class="flex flex-col gap-3 font-body-md text-body-md">
+<div class="flex justify-between items-center text-secondary">
+<span>Subtotal (3 items)</span>
+<span class="text-on-background">$53.00</span>
+</div>
+<div class="flex justify-between items-center text-secondary">
+<span>Delivery Fee</span>
+<span class="text-on-background">$4.99</span>
+</div>
+<div class="flex justify-between items-center text-secondary">
+<span>Taxes &amp; Fees</span>
+<span class="text-on-background">$6.25</span>
+</div>
+<div class="h-px bg-surface-variant my-2 w-full"></div>
+<div class="flex justify-between items-center font-title-lg text-title-lg text-on-background">
+<span>Total</span>
+<span class="text-primary font-bold text-2xl">$64.24</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Checkout Button -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md border-t border-surface-variant p-margin-mobile z-40 shadow-[0_-8px_30px_0_rgba(0,0,0,0.08)]">
+<div class="max-w-3xl mx-auto w-full">
+<button class="w-full bg-primary text-on-primary font-title-lg text-title-lg py-4 rounded-xl shadow-md hover:bg-surface-tint transition-colors active:scale-[0.98] flex items-center justify-center gap-2">
+<span>Go to Checkout</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Epicurean - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#ffdad8",
+                        "surface-tint": "#bf0029",
+                        "surface-container": "#efeded",
+                        "tertiary-container": "#727474",
+                        "primary-container": "#e31837",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e3e2e2",
+                        "on-background": "#1b1c1c",
+                        "background": "#fbf9f9",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dbdad9",
+                        "primary": "#b90027",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e3e2e2",
+                        "tertiary": "#5a5b5c",
+                        "on-primary-fixed": "#410007",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "inverse-primary": "#ffb3b1",
+                        "secondary-container": "#e2dfde",
+                        "inverse-surface": "#303031",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-container-high": "#e9e8e7",
+                        "on-tertiary-container": "#fbfbfb",
+                        "on-primary-container": "#fffaf9",
+                        "on-primary-fixed-variant": "#92001d",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fbf9f9",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#e6bdbb",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "outline": "#916e6d",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-surface-variant": "#5d3f3e",
+                        "surface-bright": "#fbf9f9",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-secondary-fixed-variant": "#474746",
+                        "secondary": "#5f5e5e",
+                        "inverse-on-surface": "#f2f0f0",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-secondary-container": "#636262",
+                        "on-secondary-fixed": "#1c1b1b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased font-body-md text-body-md overflow-x-hidden min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full max-w-7xl mx-auto">
+<button aria-label="Menu" class="p-2 hover:bg-surface-container-high transition-colors rounded-full active:scale-95 duration-150 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="font-display-lg text-display-lg font-black text-primary">
+                Epicurean
+            </div>
+<button aria-label="Cart" class="p-2 hover:bg-surface-container-high transition-colors rounded-full active:scale-95 duration-150 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-7xl mx-auto w-full px-margin-mobile md:px-margin-desktop py-xl flex flex-col gap-xl">
+<!-- Location & Search -->
+<section class="flex flex-col gap-md">
+<div class="flex items-center gap-sm text-secondary hover:text-on-background transition-colors cursor-pointer w-fit">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase text-secondary">Delivering to</span>
+<span class="font-title-lg text-title-lg text-on-background flex items-center gap-xs">
+                        124 Main Street
+                        <span class="material-symbols-outlined">expand_more</span>
+</span>
+</div>
+</div>
+<div class="relative w-full shadow-sm rounded-xl overflow-hidden group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-secondary group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border border-surface-variant rounded-xl focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-lg text-body-lg text-on-background placeholder-secondary transition-all" placeholder="Search for restaurants, cuisines, or dishes..." type="text"/>
+</div>
+</section>
+<!-- Categories -->
+<section class="flex flex-col gap-md">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Cravings</h2>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-2 pt-1 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+<!-- Category Chip -->
+<button class="flex flex-col items-center justify-center gap-sm bg-surface-container-highest hover:bg-surface-variant transition-colors rounded-xl px-lg py-md min-w-[100px] active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary text-[32px]">lunch_dining</span>
+<span class="font-label-md text-label-md text-on-surface">Burgers</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-sm bg-surface-container-highest hover:bg-surface-variant transition-colors rounded-xl px-lg py-md min-w-[100px] active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary text-[32px]">local_pizza</span>
+<span class="font-label-md text-label-md text-on-surface">Pizza</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-sm bg-surface-container-highest hover:bg-surface-variant transition-colors rounded-xl px-lg py-md min-w-[100px] active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary text-[32px]">set_meal</span>
+<span class="font-label-md text-label-md text-on-surface">Sushi</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-sm bg-surface-container-highest hover:bg-surface-variant transition-colors rounded-xl px-lg py-md min-w-[100px] active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary text-[32px]">cake</span>
+<span class="font-label-md text-label-md text-on-surface">Dessert</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-sm bg-surface-container-highest hover:bg-surface-variant transition-colors rounded-xl px-lg py-md min-w-[100px] active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary text-[32px]">ramen_dining</span>
+<span class="font-label-md text-label-md text-on-surface">Asian</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-sm bg-surface-container-highest hover:bg-surface-variant transition-colors rounded-xl px-lg py-md min-w-[100px] active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary text-[32px]">local_cafe</span>
+<span class="font-label-md text-label-md text-on-surface">Cafe</span>
+</button>
+</div>
+</section>
+<!-- Featured Restaurants (Bento-ish Grid) -->
+<section class="flex flex-col gap-lg">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Featured Spots</h2>
+<button class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors uppercase tracking-wider flex items-center gap-xs">
+                    See All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Restaurant Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_0_rgba(0,0,0,0.08)] transition-shadow duration-300 group cursor-pointer flex flex-col">
+<div class="relative w-full aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A top-down view of a gourmet artisanal double cheeseburger with crispy bacon, melted cheddar cheese, and a shiny brioche bun, resting on a rustic wooden board. The lighting is bright and high-contrast, highlighting the juicy textures and vibrant colors. The aesthetic is modern epicurean with subtle red accents in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1HXervz8JH-FrvTBzvQssE17h33O3G1paUkNxWRJi1s2sRqmivkkWTkZIPUZ6czX8pZiW4S1meE6Ifz8D4vttCf7PQZHNsnMXSXf_9RBZDrvggigHGuit9yYxLjYXbKCsuaDfdthh3byp8xIA5M5jg52UfepJYQz2BQojr1ii-JFzblWlpmjtg_MzTzs3JoU2sUBrvDzYhx_fditSl0xJE7-U-f20uQh-Gzbi3pOg7zpR3SU2b7T3Cg"/>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.9</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-sm flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-title-lg text-title-lg text-on-background line-clamp-1">The Smashed Patty</h3>
+<span class="bg-surface-container-high text-on-surface font-label-md text-label-md px-2 py-1 rounded-md whitespace-nowrap">20-30 min</span>
+</div>
+<p class="font-body-md text-body-md text-secondary line-clamp-1">American • Burgers • Comfort Food</p>
+<div class="mt-auto pt-sm flex items-center gap-sm text-secondary font-body-md text-body-md">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">delivery_dining</span> $2.99</span>
+<span>•</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">shopping_bag</span> $15 Min</span>
+</div>
+</div>
+</article>
+<!-- Restaurant Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_0_rgba(0,0,0,0.08)] transition-shadow duration-300 group cursor-pointer flex flex-col">
+<div class="relative w-full aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautifully plated assortment of fresh nigiri and maki sushi rolls on a sleek black slate rectangular plate. The fish includes vibrant orange salmon and deep red tuna. Beside it is a small bowl of soy sauce and a dab of wasabi. High-key lighting with a minimalist modern aesthetic and crisp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC37CdES3Ld-DStTokzKzMC88xAuNlCXpA2pboQsV6wITzHzQgz4yi5y_Vk39Die4ZfAhRJGnwO27nMkSSmE_T0nGU_cTS5bTe5CJTRvguejuX4gVp_015DFKeZV25bCpnhlM0rAFkNpr9PHA2sF9a1vB1vud5P0zVXaP-dCzNcaGhJIjnRS4IlnJtAPP7uFjC4FAJIF_ESawxfWAWJeTrLouHlBzFq9J6fFU_cgaQ4v9EPdv-eaY7AqQ"/>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.7</span>
+</div>
+<div class="absolute top-4 left-4 bg-primary text-on-primary font-label-md text-label-md px-2 py-1 rounded-full shadow-sm">
+                            Free Delivery
+                        </div>
+</div>
+<div class="p-4 flex flex-col gap-sm flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-title-lg text-title-lg text-on-background line-clamp-1">Okinawa Sushi Bar</h3>
+<span class="bg-surface-container-high text-on-surface font-label-md text-label-md px-2 py-1 rounded-md whitespace-nowrap">35-45 min</span>
+</div>
+<p class="font-body-md text-body-md text-secondary line-clamp-1">Japanese • Sushi • Asian</p>
+<div class="mt-auto pt-sm flex items-center gap-sm text-secondary font-body-md text-body-md">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">delivery_dining</span> $0.00</span>
+<span>•</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">shopping_bag</span> $20 Min</span>
+</div>
+</div>
+</article>
+<!-- Restaurant Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_0_rgba(0,0,0,0.08)] transition-shadow duration-300 group cursor-pointer flex flex-col md:col-span-2 lg:col-span-1">
+<div class="relative w-full aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A classic Neapolitan margherita pizza being pulled from a wood-fired oven with a metal peel. The crust is blistered and charred, the mozzarella is bubbling, and fresh basil leaves adorn the top. Bright, appetizing lighting highlights the vibrant red tomato sauce. Minimalist, premium food photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqkDiZ8PndcpUxwJA6ebMI6EZ1r-ZSZfoBINHE-Yh33CfJLFETe2C5Plz1oSkSVVjf7zo0cbDK97Er82yLUhKMVcZxh1KiWKr1LgT7efou-JtmLJ-q0GBAOVMdvPUnr-ZMlSlql75VcUbTpg3QNT-hIEqoeh3KNDydmxAu-oJs3mwgaXtdocTaJ5PhQmb0nFpqHLLOv6Uk9TUSRVHX8IUeBjmwRsJw8UD4RG1cH8cm2Krg76iPwMWg2g"/>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.8</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-sm flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-title-lg text-title-lg text-on-background line-clamp-1">Vesuvio Pizzeria</h3>
+<span class="bg-surface-container-high text-on-surface font-label-md text-label-md px-2 py-1 rounded-md whitespace-nowrap">25-40 min</span>
+</div>
+<p class="font-body-md text-body-md text-secondary line-clamp-1">Italian • Pizza • Authentic</p>
+<div class="mt-auto pt-sm flex items-center gap-sm text-secondary font-body-md text-body-md">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">delivery_dining</span> $1.49</span>
+<span>•</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">shopping_bag</span> $10 Min</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Spacer for mobile nav -->
+<div class="h-8 md:hidden"></div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-4 bg-surface/80 backdrop-blur-md border-t border-surface-variant shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)] rounded-t-xl pb-safe">
+<button class="flex flex-col items-center justify-center text-on-background active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all p-2 rounded-lg active:scale-90">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-md text-label-md mt-1">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all p-2 rounded-lg active:scale-90">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-label-md mt-1">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all p-2 rounded-lg active:scale-90">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-1">Account</span>
+</button>
+</nav>
+</body></html>
