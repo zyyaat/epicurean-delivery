@@ -302,8 +302,8 @@ function SearchContent() {
             }}
           />
           
-          {/* Dark Semi-transparent Overlay - Dramatic Effect */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[3px] -z-0" />
+          {/* Dark Semi-transparent Overlay - Lighter Effect */}
+          <div className="absolute inset-0 bg-black/40 -z-0" />
           
           {/* Subtle gradient for depth */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-gray-900/20 -z-0" />
